@@ -1,0 +1,12 @@
+{{ define "main" }}
+{{ $style := resources.Get "scss/taxonomy.scss" | resources.ToCSS | resources.Minify }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+<div id="headline-container">
+    <h1>{{ humanize .Title }}</h1>
+</div>
+<div id="tag-link-container">
+    {{ range .Pages }}
+    <a class="tag-link" href="{{ .RelPermalink }}">{{ humanize .Title }}</a>
+    {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{ $style := resources.Get "scss/index.scss" | resources.ToCSS | resources.Minify }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+{{ $posts := resources.Get "scss/posts.scss" | resources.ToCSS | resources.Minify }}
+<link rel="stylesheet" href="{{ $posts.Permalink }}">
+<div id="headline-container">
+    <h1>Posts</h1>
+</div>
+<div id="posts-list-wide">
+    {{ range .Pages.ByPublishDate.Reverse }}
+    <div class="feature-post">
+        <a href="{{ .RelPermalink }}">
+            {{ if .Params.featured_image }}
+            {{ $thumbpath := path.Join "post" .File.ContentBaseName .Params.featured_image}}
+            <img src="{{ $thumbpath }}">
+            {{ $thumbpath }}
+            {{ end }}
+            <div class="post-title-container">
+                <span>{{ .Title }}</span>
+            </div>
+        </a>
+    </div>
+    {{ end }}
+</div>
+{{ end }}

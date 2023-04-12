@@ -1,0 +1,16 @@
+{
+	"devDependencies": {
+		"@types/node": "^18.15.11",
+		"typescript": "^5.0.4"
+	},
+	"scripts": {
+		"dev": "yarn tsc --watch",
+		"build": "yarn tsc",
+		"clean": "yarn tsc --clean",
+		"start": "node build/main.js"
+	},
+	"dependencies": {
+		"chokidar": "^3.5.3",
+		"sass": "^1.62.0"
+	}
+}

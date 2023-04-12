@@ -1,0 +1,32 @@
+{
+  "baseurl": "https://redstonerayy.github.io",
+  "languageCode": "en-gb",
+  "title": "A Certain Scientific Tech Blog",
+  "menu": {
+    "main": [
+      {
+        "name": "Projects",
+        "url": "/projects/",
+        "weight": 1
+      },
+      {
+        "name": "Posts",
+        "url": "/posts/",
+        "weight": 2
+      },
+      {
+        "name": "Tags",
+        "url": "/tags/",
+        "weight": 3
+      },
+      {
+        "name": "About",
+        "url": "/about/",
+        "weight": 4
+      }
+    ]
+  },
+  "taxonomies": {
+    "tag": "tags"
+  }
+}

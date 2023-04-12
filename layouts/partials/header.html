@@ -1,0 +1,25 @@
+{{ $style := resources.Get "scss/header.scss" | resources.ToCSS | resources.Minify }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+<div id="top-bar" class="whitemode">
+    <div id="top-bar-left">
+        <a href="/">Redstonerayy</a>
+        <nav id="nav" class="nav justify-content-center">
+            {{ range .Site.Menus.main }}
+            <a class="nav-link" href="{{ .URL }}">
+                {{ $text := print .Name | safeHTML }}
+                {{ $text }}
+            </a>
+            {{ end }}
+        </nav>
+    </div>
+    <div id="top-bar-right">
+        <a href="https://github.com/Redstonerayy" target="_blank">
+            Github
+            <img src="/images/newtab.webp" alt="Open in New Tab">
+        </a>
+        <div>
+            <img src="/images/moonfilled.svg" style="display: none" alt="Darkmode">
+            <img src="/images/sunnofill.svg" style="display: none" alt="Lightmode">
+        </div>
+    </div>
+</div>

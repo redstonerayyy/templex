@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{ $style := resources.Get "scss/index.scss" | resources.ToCSS | resources.Minify }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+<canvas id="start-game-canvas"></canvas>
+<div id="below-game">
+    <div id="posts-list">
+        <h1>Featured Posts</h1>
+        {{ range .Site.Taxonomies.tags.featured }}
+        <div class="feature-post">
+            <a href="{{ .RelPermalink }}">
+                {{ if .Params.featured_image }}
+                {{ $thumbpath := path.Join .File.Dir .Params.featured_image}}
+                <img src="{{ $thumbpath }}">
+                {{ end }}
+                <div class="post-title-container">
+                    <span>{{ .Title }}</span>
+                </div>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+    <div id="posts-list">
+        <h1>Best Gists</h1>
+        {{ range .Site.Taxonomies.tags.featured_gist }}
+        <div class="feature-post">
+            <a href="{{ .RelPermalink }}">
+                {{ if .Params.featured_image }}
+                {{ $thumbpath := path.Join .File.Dir .Params.featured_image}}
+                <img src="{{ $thumbpath }}">
+                {{ end }}
+                <div class="post-title-container">
+                    <span>{{ .Title }}</span>
+                </div>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+    <div id="posts-list">
+        <h1>Project Updates</h1>
+        {{ range .Site.Taxonomies.tags.project_update }}
+        <div class="feature-post">
+            <a href="{{ .RelPermalink }}">
+                {{ if .Params.featured_image }}
+                {{ $thumbpath := path.Join .File.Dir .Params.featured_image}}
+                <img src="{{ $thumbpath }}">
+                {{ end }}
+                <div class="post-title-container">
+                    <span>{{ .Title }}</span>
+                </div>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

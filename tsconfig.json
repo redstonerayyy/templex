@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"module": "NodeNext",
+		"moduleResolution": "nodenext",
+		"outDir": "./build",
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules"]
+}
