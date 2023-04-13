@@ -7,12 +7,15 @@ export function process_sass(filepath: string, publicdir: string) {
 		style: "compressed",
 	}).css;
 
-	let outpath =
-		publicdir +
-		filepath.substring(filepath.indexOf("/" + 1)) +
-		path.parse(filepath).name +
-		".css";
+	let outpath = path.join(
+		publicdir,
+		path.join(...path.dirname(filepath).split("/").slice(1)),
+		path.parse(filepath).name + ".css"
+	);
 
-	console.log(outpath);
+	if (!fs.existsSync(path.dirname(outpath))) {
+		fs.mkdirSync(path.dirname(outpath), { recursive: true });
+	}
+
 	fs.writeFileSync(outpath, css);
 }
