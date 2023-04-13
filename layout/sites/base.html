@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-{{ partial "head.html" . }}
+{{ include "head.html" }}
 
 <body>
-    {{ partial "header.html" . }}
+    {{ include "header.html" . }}
     <div id="content">
         {{ block "main" . }}{{ end }}
     </div>

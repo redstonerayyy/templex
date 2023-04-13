@@ -1,8 +1,10 @@
 {
-	"baseurl": "https://redstonerayy.github.io",
-	"languagecode": "en-gb",
 	"title": "A Certain Scientific Tech Blog",
-	"options": {},
+	"publicdir": "./public",
+	"staticdir": "./static",
+	"processeddir": "./processed",
+	"contentdir": "./content",
+	"layoutdir": "./layout",
 	"site": {
 		"menu": [
 			{
