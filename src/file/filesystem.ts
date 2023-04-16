@@ -2,6 +2,8 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import * as chokidar from "chokidar";
 
+// return the filepaths of all files in this directory and
+// of all of it's subdirectories
 export function* walk_dir(dir: string): IterableIterator<string> {
 	for (const p of fs.readdirSync(dir, { withFileTypes: true })) {
 		const entry = path.join(dir, p.name);
@@ -10,10 +12,10 @@ export function* walk_dir(dir: string): IterableIterator<string> {
 	}
 }
 
-export function watch(directorypaths: string[], filepaths: string[]) {
-	const watcher = chokidar.watch(directorypaths.concat(filepaths), {
-		persistent: true,
-	});
+// export function watch(directorypaths: string[], filepaths: string[]) {
+// 	const watcher = chokidar.watch(directorypaths.concat(filepaths), {
+// 		persistent: true,
+// 	});
 
-	return watcher;
-}
+// 	return watcher;
+// }

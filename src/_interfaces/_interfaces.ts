@@ -1,7 +1,4 @@
-export interface Dictionary {
-	[key: string]: any;
-}
-
+// CLI OPTIONS
 export interface Option {
 	option: string;
 	value: string;
@@ -14,6 +11,7 @@ export interface CLI_OPTIONS {
 	options: Array<Option>;
 }
 
+// CONFIG
 export interface Config {
 	title: string;
 	publicdir: string;
@@ -29,4 +27,21 @@ export interface Config {
 			}
 		];
 	};
+}
+
+// TEMPLATING
+export interface Dynamic {
+	matching: string;
+	directive: string;
+	index: number;
+}
+
+export interface Template {
+	filecontent: string;
+	dynamics: Array<Dynamic>;
+}
+
+// GENERAL
+export interface Dictionary {
+	[key: string]: any;
 }

@@ -4,6 +4,7 @@ import * as path from "node:path";
 import { Dictionary, Config } from "../_interfaces/_interfaces";
 import { walk_dir } from "../file/filesystem";
 import { read_html_template } from "./sites/specials";
+import { process_template_includes } from "./sites/includes";
 
 export function makes_sites(
 	config: Config,
@@ -31,11 +32,32 @@ export function makes_sites(
 
 	for (const specialpath of specialpaths) {
 		specials[path.basename(specialpath)] = read_html_template(specialpath);
+		// process special files with includes
+		specials[path.basename(specialpath)] = process_template_includes(
+			path.basename(specialpath),
+			specials[path.basename(specialpath)],
+			includes
+		);
 	}
 
-	// for (const key in specials) {
-	// 	console.log(key, specials[key].dynamics);
-	// }
+	for (const key in specials) {
+		console.log(key, specials[key]);
+	}
+
+	// read template files
+	const templatepaths = walk_dir(path.join(layoutdir, "templates"));
+	const templates: Dictionary = {};
+
+	for (const templatepath of templatepaths) {
+		templates[path.basename(templatepath)] =
+			read_html_template(templatepath);
+		// process template files with includes
+		templates[path.basename(templatepath)] = process_template_includes(
+			path.basename(templatepath),
+			templates[path.basename(templatepath)],
+			includes
+		);
+	}
 
 	// walk content directory and make sites
 

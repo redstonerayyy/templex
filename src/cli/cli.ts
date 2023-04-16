@@ -4,9 +4,13 @@
 
 import { CLI_OPTIONS } from "../_interfaces/_interfaces";
 
+// available commands
 const commands: string[] = ["watch", "new"];
 
+// parse the cli arguments
+// TODO: help and info
 export function parse_cli_options(): CLI_OPTIONS {
+	// initialize
 	const args: string[] = process.argv.slice(2);
 
 	let cli_options: CLI_OPTIONS = {
@@ -16,12 +20,17 @@ export function parse_cli_options(): CLI_OPTIONS {
 		options: [],
 	};
 
+	// are there any arguments?
 	if (!args.length) return cli_options;
 
+	// check if there is a command
 	if (commands.includes(args[0])) {
 		cli_options.command = args[0];
 	}
 
+	// parse options e.g. --option value
+	// parse flags e.g. -p
+	// parse positional arguments
 	for (let i = 1; i < args.length; i++) {
 		let currentarg = args[i];
 		if (currentarg.substring(0, 2) === "--") {

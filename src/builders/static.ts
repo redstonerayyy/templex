@@ -1,6 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
+// static files are just copied
 export function make_static(staticdir: string, publicdir: string) {
 	// copy static files
 	for (const p of fs.readdirSync(staticdir)) {
