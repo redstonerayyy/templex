@@ -2,13 +2,12 @@
 // watch                watch mode, rebuilt on change
 // new [type] [path]    create new folder at path for the post
 
-import { CLI_OPTIONS } from "./interfaces";
+import { CLI_OPTIONS } from "../_interfaces/_interfaces";
 
 const commands: string[] = ["watch", "new"];
 
-export function parse_cli_options() {
+export function parse_cli_options(): CLI_OPTIONS {
 	const args: string[] = process.argv.slice(2);
-	if (!args.length) return;
 
 	let cli_options: CLI_OPTIONS = {
 		command: "",
@@ -16,6 +15,8 @@ export function parse_cli_options() {
 		flags: [],
 		options: [],
 	};
+
+	if (!args.length) return cli_options;
 
 	if (commands.includes(args[0])) {
 		cli_options.command = args[0];

@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-import { CLI_OPTIONS } from "./interfaces";
+import { CLI_OPTIONS } from "../_interfaces/_interfaces";
 
 export function cli_new(cli_options: CLI_OPTIONS, configdir: string) {
 	if (cli_options.arguments.length >= 2) {
