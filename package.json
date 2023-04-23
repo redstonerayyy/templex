@@ -1,14 +1,18 @@
 {
+	"name": "templex",
 	"author": "Redstonerayy",
 	"license": "GPL-3.0-or-later",
 	"devDependencies": {
 		"@types/node": "^18.15.11",
 		"typescript": "^5.0.4"
 	},
+	"bin": {
+		"templex": "./build/main.js"
+	},
 	"scripts": {
 		"dev": "yarn tsc --watch",
 		"build": "yarn tsc",
-		"clean": "yarn tsc --clean",
+		"clean": "rm -rf ./build",
 		"start": "node build/main.js"
 	},
 	"dependencies": {
