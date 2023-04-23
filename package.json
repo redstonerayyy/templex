@@ -1,4 +1,6 @@
 {
+	"author": "Redstonerayy",
+	"license": "GPL-3.0-or-later",
 	"devDependencies": {
 		"@types/node": "^18.15.11",
 		"typescript": "^5.0.4"
