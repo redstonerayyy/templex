@@ -3,8 +3,8 @@ import * as path from "node:path";
 
 import { Dictionary, Config } from "../_interfaces/_interfaces";
 import { walk_dir } from "../file/filesystem";
-import { read_html_template } from "./sites/specials";
-import { process_template_includes } from "./sites/includes";
+import { read_html_template } from "./content/specials";
+import { process_template_includes } from "./content/includes";
 
 export function makes_sites(
 	config: Config,

@@ -5,6 +5,7 @@
 	"processeddir": "./processed",
 	"contentdir": "./content",
 	"layoutdir": "./layout",
+	"themedir": "./themes",
 	"site": {
 		"menu": [
 			{
