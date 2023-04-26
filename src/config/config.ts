@@ -30,11 +30,8 @@ export function read_yml_config(filepath: string): Config {
 
 /*--------------------- GATHER ALL CONFIG FILES ---------------------*/
 export function read_config_folder(configdir: string) {
-	console.log(configdir);
-
+	// read all config files
 	const configpaths: IterableIterator<string> = walk_dir(configdir);
-
-	console.log(configpaths);
 
 	const configs: Dictionary = {};
 
@@ -46,5 +43,24 @@ export function read_config_folder(configdir: string) {
 		}
 	}
 
-	return configs;
+	// merge config files into main config
+	const mergedconfig: Config = {
+		title: "",
+		publicdir: "",
+		staticdir: "",
+		processeddir: "",
+		contentdir: "",
+		layoutdir: "",
+		scaffolddir: "",
+		site: {
+			menu: [
+				{
+					name: "",
+					url: "",
+				},
+			],
+		},
+	};
+
+	return mergedconfig;
 }

@@ -1,52 +1,44 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-import { CLI_OPTIONS } from "../interfaces/interfaces";
+import { CliOptions, Config } from "../interfaces/interfaces";
 
 // try to create a new content piece
 // using the supplied configuration and folderpath
 // errors if configuration does not exist
 // gives out info if the post exists and does not overwrite it
-export function cli_new(cli_options: CLI_OPTIONS, scaffoldsdir: string) {
+export default function cli_new(cli_options: CliOptions, config: Config) {
 	// check for sufficient arguments
-	if (cli_options.arguments.length >= 1) {
-		const newpath = path.join(
-			scaffoldsdir,
+	if (cli_options.arguments.length < 1) {
+		console.log("Not enough arguments! Missing required path argument");
+		return;
+	}
+
+	// check if file to create already exists
+	if (fs.existsSync(cli_options.arguments[0])) {
+		console.log(`Post ${cli_options.arguments[1]} already exists`);
+		return;
+	}
+
+	// check if type of new file was supplied, else use default
+	let typepath = path.join(config.scaffolddir, "post.md");
+	if (cli_options.arguments.length > 1)
+		typepath = path.join(
+			config.scaffolddir,
 			cli_options.arguments[1] + ".md"
 		);
 
-		// create new post if configuration exists
-		// and post does not already exist
-		if (fs.existsSync(newpath)) {
-			if (!fs.existsSync(cli_options.arguments[1])) {
-				try {
-					// create folder, copy configuration
-					fs.mkdirSync(cli_options.arguments[1], { recursive: true });
-					fs.cpSync(
-						newpath,
-						path.join(
-							cli_options.arguments[1],
-							cli_options.arguments[0] + ".json"
-						)
-					);
-					// index.md file
-					fs.writeFileSync(
-						path.join(cli_options.arguments[1], "index.md"),
-						"",
-						{ encoding: "utf-8" }
-					);
-				} catch (e) {
-					console.log(
-						`Error creating post. Path is ${cli_options.arguments[1]}`
-					);
-				}
-			} else {
-				console.log(`Post ${cli_options.arguments[1]} already exists`);
-			}
-		} else {
-			console.log(`Error creating post. Can't find ${newpath}`);
-		}
-	} else {
-		console.log(`Not enough argument for command ${cli_options.command}`);
+	// check if type for new file exists
+	if (fs.existsSync(typepath)) {
+		console.log("Post already exists! Bailing out :)");
+		return;
 	}
+
+	// create folder
+	fs.mkdirSync(path.basename(cli_options.arguments[0]), {
+		recursive: true,
+	});
+
+	// copy file
+	fs.cpSync(typepath, cli_options.arguments[0]);
 }

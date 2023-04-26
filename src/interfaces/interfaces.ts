@@ -1,17 +1,17 @@
-// CLI OPTIONS
+/*--------------------- CLI OPTiONS ---------------------*/
 export interface Option {
 	option: string;
 	value: string;
 }
 
-export interface CLI_OPTIONS {
+export interface CliOptions {
 	command: string;
 	arguments: string[];
 	flags: string[];
 	options: Array<Option>;
 }
 
-// CONFIG
+/*--------------------- CONFIG ---------------------*/
 export interface Config {
 	title: string;
 	publicdir: string;
@@ -19,6 +19,7 @@ export interface Config {
 	processeddir: string;
 	contentdir: string;
 	layoutdir: string;
+	scaffolddir: string;
 	site: {
 		menu: [
 			{

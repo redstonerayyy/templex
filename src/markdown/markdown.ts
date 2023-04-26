@@ -1,5 +1,4 @@
 import Markdown from "markdown-it"; // ("markdown-it");
-import hljs from "highlight.js";
 import * as fs from "node:fs";
 
 export function render_markdown(filepath: string) {
