@@ -3,10 +3,10 @@
 	"author": "Redstonerayy",
 	"license": "GPL-3.0-or-later",
 	"devDependencies": {
-		"@types/node": "^18.15.11",
-		"typescript": "^5.0.4",
 		"@types/highlight.js": "^10.1.0",
-		"@types/markdown-it": "^12.2.3"
+		"@types/markdown-it": "^12.2.3",
+		"@types/node": "^18.15.11",
+		"typescript": "^5.0.4"
 	},
 	"bin": {
 		"templex": "./build/main.js"
@@ -18,8 +18,10 @@
 		"start": "node build/main.js"
 	},
 	"dependencies": {
+		"@highlightjs/cdn-assets": "^11.7.0",
 		"chokidar": "^3.5.3",
 		"highlight.js": "^11.7.0",
+		"highlightjs-line-numbers.js": "^2.8.0",
 		"markdown-it": "^13.0.1",
 		"sass": "^1.62.0",
 		"yaml": "^2.2.2"
