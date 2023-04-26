@@ -8,10 +8,10 @@ import { Config } from "./interfaces/interfaces";
 import { read_config_folder } from "./config/config";
 
 /*--------------------- BUILD ---------------------*/
-import { make_clean } from "./builders/clean";
-import { make_static } from "./builders/static";
-import { make_processed } from "./builders/processed";
-import { makes_sites } from "./builders/sites";
+import { make_clean } from "./util/clean";
+import { make_static } from "./static/static";
+import { make_processed } from "./processed/processed";
+import { makes_sites } from "./markdown/sites";
 
 /*--------------------- CONSTANTS ---------------------*/
 const CONFIGDIR: string = "./config";

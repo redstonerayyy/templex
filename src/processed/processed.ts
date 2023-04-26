@@ -1,8 +1,8 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-import { process_sass } from "./processed/scss";
-import { walk_dir } from "../file/filesystem";
+import { process_sass } from "./scss";
+import { walk_dir } from "../filesystem/filesystem";
 
 // for each file check the extension
 // and process it accordingly

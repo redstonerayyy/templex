@@ -2,9 +2,9 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 import { Dictionary, Config } from "../interfaces/interfaces";
-import { walk_dir } from "../file/filesystem";
-import { read_html_template } from "./content/specials";
-import { process_template_includes } from "./content/includes";
+import { walk_dir } from "../filesystem/filesystem";
+import { read_html_template } from "./specials";
+import { process_template_includes } from "./includes";
 
 export function makes_sites(
 	config: Config,

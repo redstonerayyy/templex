@@ -14,7 +14,6 @@
 	"scripts": {
 		"dev": "yarn tsc --watch",
 		"build": "yarn tsc",
-		"clean": "rm -rf ./build",
 		"start": "node build/main.js"
 	},
 	"dependencies": {

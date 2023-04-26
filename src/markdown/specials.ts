@@ -1,6 +1,6 @@
 import * as fs from "node:fs";
 
-import { Template } from "../../interfaces/interfaces";
+import { Template } from "../interfaces/interfaces";
 
 export function read_html_template(filepath: string): Template {
 	const filecontent = fs.readFileSync(filepath, { encoding: "utf-8" });

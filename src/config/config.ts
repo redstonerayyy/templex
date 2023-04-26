@@ -3,7 +3,7 @@ import * as path from "node:path";
 import * as yaml from "yaml";
 
 import { Config, Dictionary } from "../interfaces/interfaces";
-import { walk_dir } from "../file/filesystem";
+import { walk_dir } from "../filesystem/filesystem";
 
 /*--------------------- READ DIFFERENT CONFIG TYPES ---------------------*/
 // read json config file
