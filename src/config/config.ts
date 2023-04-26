@@ -51,7 +51,7 @@ export function read_config_folder(configdir: string) {
 		processeddir: "",
 		contentdir: "",
 		layoutdir: "",
-		scaffolddir: "",
+		scaffolddir: "test/scaffolds",
 		site: {
 			menu: [
 				{
