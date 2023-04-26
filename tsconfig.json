@@ -7,8 +7,11 @@
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitAny": true,
 		"removeComments": true,
-		"preserveConstEnums": true
+		"preserveConstEnums": true,
+		"paths": {
+			"highlight.js": ["./src/@types/highlight.js"]
+		}
 	},
 	"include": ["src/**/*"],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", "./src/@types"]
 }

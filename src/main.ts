@@ -1,15 +1,15 @@
 /*--------------------- CLI ---------------------*/
-import { CLI_OPTIONS } from "./_interfaces/_interfaces";
+import { CLI_OPTIONS } from "./interfaces/interfaces";
 import { parse_cli_options } from "./cli/cli";
 import { cli_new } from "./cli/new";
 
 /*--------------------- CONFIG ---------------------*/
-import { Config } from "./_interfaces/_interfaces";
+import { Config } from "./interfaces/interfaces";
 import { read_config_folder } from "./config/config";
 
 /*--------------------- BUILD ---------------------*/
 import { make_clean } from "./builders/clean";
-import { make_static } from "./builders/static/static";
+import { make_static } from "./builders/static";
 import { make_processed } from "./builders/processed";
 import { makes_sites } from "./builders/sites";
 

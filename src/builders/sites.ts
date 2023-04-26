@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-import { Dictionary, Config } from "../_interfaces/_interfaces";
+import { Dictionary, Config } from "../interfaces/interfaces";
 import { walk_dir } from "../file/filesystem";
 import { read_html_template } from "./content/specials";
 import { process_template_includes } from "./content/includes";

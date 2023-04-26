@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-import { Dictionary, Template } from "../../_interfaces/_interfaces";
+import { Dictionary, Template } from "../../interfaces/interfaces";
 
 export function process_template_includes(
 	filename: string,

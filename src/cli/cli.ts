@@ -1,8 +1,8 @@
 // CLI options
 // watch                watch mode, rebuilt on change
-// new [type] [path]    create new folder at path for the post
+// new [path] [type]    create new folder at path for the post
 
-import { CLI_OPTIONS } from "../_interfaces/_interfaces";
+import { CLI_OPTIONS } from "../interfaces/interfaces";
 
 // available commands
 const commands: string[] = ["watch", "new"];

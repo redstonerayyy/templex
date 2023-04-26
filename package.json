@@ -4,7 +4,9 @@
 	"license": "GPL-3.0-or-later",
 	"devDependencies": {
 		"@types/node": "^18.15.11",
-		"typescript": "^5.0.4"
+		"typescript": "^5.0.4",
+		"@types/highlight.js": "^10.1.0",
+		"@types/markdown-it": "^12.2.3"
 	},
 	"bin": {
 		"templex": "./build/main.js"
@@ -17,6 +19,8 @@
 	},
 	"dependencies": {
 		"chokidar": "^3.5.3",
+		"highlight.js": "^11.7.0",
+		"markdown-it": "^13.0.1",
 		"sass": "^1.62.0",
 		"yaml": "^2.2.2"
 	}

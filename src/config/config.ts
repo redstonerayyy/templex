@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import * as yaml from "yaml";
 
-import { Config, Dictionary } from "../_interfaces/_interfaces";
+import { Config, Dictionary } from "../interfaces/interfaces";
 import { walk_dir } from "../file/filesystem";
 
 /*--------------------- READ DIFFERENT CONFIG TYPES ---------------------*/
