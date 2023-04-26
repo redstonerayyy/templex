@@ -1,5 +1,10 @@
+# node, yarn
 /node_modules
-/build
-/public
-/.vscode
 *.log
+
+# build outputs
+/dist
+/test/public
+
+# IDE stuff
+/.vscode

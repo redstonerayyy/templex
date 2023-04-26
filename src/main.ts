@@ -20,23 +20,10 @@ const EXECUTIONDIR: string = process.cwd();
 /*--------------------- CLI OPTIONS ---------------------*/
 const cli_options: CLI_OPTIONS = parse_cli_options();
 
-if (cli_options.command == "new") cli_new(cli_options, CONFIGDIR);
-
 /*--------------------- CONFIG ---------------------*/
 const config = read_config_folder(CONFIGDIR);
 
-// RUNTIME
-
-// BUILD
-// make_clean(config.publicdir);
-// make_static(config.staticdir, config.publicdir);
-// make_processed(config.processeddir, config.publicdir);
-// makes_sites(config, config.contentdir, config.layoutdir);
-
-// WATCH
-// cleardirectory("./public");
-// copyfoldercontents("./static", "./public");
-
-// const watcher = watch(["./static", "./processed"], []);
-
-// SERVE HTTP
+/*--------------------- EXECUTE COMMAND ---------------------*/
+if (cli_options.command == "new") cli_new(cli_options, CONFIGDIR);
+// watch
+// build

@@ -1,6 +1,8 @@
 // CLI options
 // watch                watch mode, rebuilt on change
-// new [path] [type]    create new folder at path for the post
+// new [path] [type]    create post of [type] at [path]
+// help                 print help information for cli
+// info                 print info about texmplex
 
 import { CLI_OPTIONS } from "../interfaces/interfaces";
 
