@@ -29,8 +29,8 @@ export default function cli_new(cli_options: CliOptions, config: Config) {
 		);
 
 	// check if type for new file exists
-	if (fs.existsSync(typepath)) {
-		console.log("Post already exists! Bailing out :)");
+	if (!fs.existsSync(typepath)) {
+		console.log("Type of new file not present! Bailing out :)");
 		return;
 	}
 
