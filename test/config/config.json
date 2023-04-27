@@ -6,6 +6,7 @@
 	"contentdir": "./content",
 	"layoutdir": "./layout",
 	"themedir": "./themes",
+	"scaffolddir": "./scaffolds",
 	"site": {
 		"menu": [
 			{
