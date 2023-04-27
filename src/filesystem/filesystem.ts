@@ -11,11 +11,3 @@ export function* walk_dir(dir: string): IterableIterator<string> {
 		else if (p.isFile()) yield entry;
 	}
 }
-
-// export function watch(directorypaths: string[], filepaths: string[]) {
-// 	const watcher = chokidar.watch(directorypaths.concat(filepaths), {
-// 		persistent: true,
-// 	});
-
-// 	return watcher;
-// }

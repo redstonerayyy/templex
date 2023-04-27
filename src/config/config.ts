@@ -4,6 +4,7 @@ import * as yaml from "yaml";
 
 import { Config, Dictionary } from "../interfaces/interfaces";
 import { walk_dir } from "../filesystem/filesystem";
+import { config } from "node:process";
 
 /*--------------------- READ DIFFERENT CONFIG TYPES ---------------------*/
 // read json config file
@@ -30,9 +31,15 @@ export function read_yml_config(filepath: string): Config {
 
 /*--------------------- GATHER ALL CONFIG FILES ---------------------*/
 export function read_config_folder(configdir: string) {
-	// read all config files
-	const configpaths: IterableIterator<string> = walk_dir(configdir);
+	// gather all config file paths
+	if (!fs.existsSync(configdir)) {
+		console.log(`Can't find config folder ${configdir} !`);
+		process.exit();
+	}
 
+	const configpaths = walk_dir(configdir);
+
+	// read all config files
 	const configs: Dictionary = {};
 
 	for (const configpath of configpaths) {

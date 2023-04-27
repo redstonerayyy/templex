@@ -11,28 +11,27 @@ import cli_help from "./cli/help";
 import { Config } from "./interfaces/interfaces";
 import { read_config_folder } from "./config/config";
 
-/*--------------------- BUILD ---------------------*/
-import { make_clean } from "./util/clean";
-import { make_static } from "./static/static";
-import { make_processed } from "./processed/processed";
-import { makes_sites } from "./markdown/sites";
-
 /*--------------------- CONSTANTS ---------------------*/
-const CONFIGDIR: string = "./test/config";
+let CONFIGDIR: string = "./config";
 const EXECUTIONDIR: string = process.cwd();
 
 /*--------------------- CLI OPTIONS ---------------------*/
 const cli_options: CliOptions = parse_cli_options();
 
+if (Object.keys(cli_options.options).includes("configdir"))
+	CONFIGDIR = cli_options.options["configdir"];
+
+/*--------------------- EXECUTE COMMAND WITHOUT COINFIG ---------------------*/
+if (cli_options.command == "") {
+	cli_help();
+	process.exit();
+}
+
 /*--------------------- CONFIG ---------------------*/
 const config: Config = read_config_folder(CONFIGDIR);
 
-/*--------------------- EXECUTE COMMAND ---------------------*/
+/*--------------------- EXECUTE COMMAND WTIH CONFIG ---------------------*/
 if (cli_options.command == "watch") cli_watch(cli_options, config);
 if (cli_options.command == "build") cli_build(cli_options, config);
 if (cli_options.command == "new") cli_new(cli_options, config);
 if (cli_options.command == "info") cli_info(config);
-if (cli_options.command == "") cli_help();
-
-// watch
-// build

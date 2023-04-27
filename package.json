@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "yarn tsc --watch",
 		"start": "node dist/main.js",
+		"test": "node dist/main.js build --configdir ./test/config",
 		"clean": "rm -rf ./dist",
 		"build": "yarn tsc && yarn babel dist/main.js"
 	},

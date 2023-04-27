@@ -8,7 +8,7 @@ export interface CliOptions {
 	command: string;
 	arguments: string[];
 	flags: string[];
-	options: Array<Option>;
+	options: { [key: string]: string };
 }
 
 /*--------------------- CONFIG ---------------------*/
