@@ -1,10 +1,10 @@
-import * as fs from "node:fs";
-import * as path from "node:path";
+import * as fs from "fs";
+import * as path from "path";
 import * as yaml from "yaml";
 
 import { Config, Dictionary } from "../interfaces/interfaces";
 import { walk_dir } from "../filesystem/filesystem";
-import { config } from "node:process";
+import { config } from "process";
 
 /*--------------------- READ DIFFERENT CONFIG TYPES ---------------------*/
 // read json config file

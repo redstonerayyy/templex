@@ -13,6 +13,7 @@ import { read_config_folder } from "./config/config";
 
 /*--------------------- CONSTANTS ---------------------*/
 let CONFIGDIR: string = "./config";
+const VERSION = "0.1.0";
 const EXECUTIONDIR: string = process.cwd();
 
 /*--------------------- CLI OPTIONS ---------------------*/
@@ -34,4 +35,4 @@ const config: Config = read_config_folder(CONFIGDIR);
 if (cli_options.command == "watch") cli_watch(cli_options, config);
 if (cli_options.command == "build") cli_build(cli_options, config);
 if (cli_options.command == "new") cli_new(cli_options, config);
-if (cli_options.command == "info") cli_info(config);
+if (cli_options.command == "info") cli_info(config, VERSION);

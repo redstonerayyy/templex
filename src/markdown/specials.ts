@@ -1,4 +1,4 @@
-import * as fs from "node:fs";
+import * as fs from "fs";
 
 import { Template } from "../interfaces/interfaces";
 

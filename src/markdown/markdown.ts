@@ -1,5 +1,5 @@
 import Markdown from "markdown-it"; // ("markdown-it");
-import * as fs from "node:fs";
+import * as fs from "fs";
 
 export function render_markdown(filepath: string) {
 	const md = new Markdown({});
