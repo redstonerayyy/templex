@@ -14,6 +14,8 @@ export interface CliOptions {
 /*--------------------- CONFIG ---------------------*/
 export interface Config {
 	title: string;
+	configdir: string;
+	executiondir: string;
 	publicdir: string;
 	staticdir: string;
 	processeddir: string;

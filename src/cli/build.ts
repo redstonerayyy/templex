@@ -3,8 +3,9 @@ import * as path from "path";
 
 import { CliOptions, Config } from "../interfaces/interfaces";
 
-// function to build the site for deployment,
+/*------------ function to build the site for deployment ------------*/
 // optimizes the build for minmal size and load time
 export default function cli_build(cli_options: CliOptions, config: Config) {
+	const rootdir = path.dirname(config.configdir);
 	console.log("Not Implemented");
 }

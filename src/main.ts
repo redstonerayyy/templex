@@ -28,8 +28,10 @@ if (cli_options.command == "") {
 	process.exit();
 }
 
-/*--------------------- CONFIG ---------------------*/
+/*--------------------- READ CONFIG ---------------------*/
 const config: Config = read_config_folder(CONFIGDIR);
+config.configdir = CONFIGDIR;
+config.executiondir = EXECUTIONDIR;
 
 /*--------------------- EXECUTE COMMAND WITH CONFIG ---------------------*/
 if (cli_options.command == "watch") cli_watch(cli_options, config);
