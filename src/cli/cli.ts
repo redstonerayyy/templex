@@ -1,11 +1,16 @@
 /*--------------------- CLI OPTIONS ---------------------*/
+// These are your CLI options
+
+// templex [command] [options | flags | arguments]
+
 // commands:
-// watch                watch mode, rebuilt on change
-// new [path] [type]    create post of [type] at [path]
-// help                 print help information for cli
-// info                 print info about texmplex
+//     watch                watch mode, rebuilt on change
+//     new [path] [type]    create post of [type] at [path]
+//     help                 print help information for cli
+//     info                 print info about texmplex
+
 // options:
-// --configdir [path/to/configdir]
+//     --configdir [path/to/configdir]
 
 import { CliOptions } from "../interfaces/interfaces";
 
@@ -25,13 +30,14 @@ export function parse_cli_options(): CliOptions {
 		options: {},
 	};
 
-	// are there any arguments?
+	/*------------ are there any arguments? ------------*/
 	if (!args.length) return cli_options;
 
-	// check if there is a command
+	/*------------ check if there is a command ------------*/
 	if (!commands.includes(args[0])) return cli_options;
 	cli_options.command = args[0];
 
+	/*------------ parse cli options ------------*/
 	// parse options e.g. --option value
 	// parse flags e.g. -p
 	// parse positional arguments

@@ -1,4 +1,4 @@
-// gives help for the cli commands
+/*------------ gives help for the cli commands ------------*/
 export default function cli_help() {
 	console.log(
 		`

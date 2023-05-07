@@ -16,6 +16,7 @@ export interface Config {
 	title: string;
 	configdir: string;
 	executiondir: string;
+	rootdir: string;
 	publicdir: string;
 	staticdir: string;
 	processeddir: string;

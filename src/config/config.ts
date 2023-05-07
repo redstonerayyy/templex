@@ -29,8 +29,8 @@ export function read_yml_config(filepath: string): Config {
 	return config;
 }
 
-/*--------------------- GATHER ALL CONFIG FILES ---------------------*/
-export function read_config_folder(configdir: string) {
+/*--------------------- READ CONFIG ---------------------*/
+export function read_config_folder(configdir: string, cwd: string) {
 	/*------------ gather all config file paths ------------*/
 	if (!fs.existsSync(configdir)) {
 		console.log(`Can't find config folder ${configdir} !`);
@@ -52,6 +52,12 @@ export function read_config_folder(configdir: string) {
 		console.log(`Can't find config.yml or config.json in config folder!`);
 		process.exit();
 	}
+
+	/*------------ add directories to config ------------*/
+	// root dir isn't necessary the cwd
+	config.configdir = configdir;
+	config.executiondir = cwd;
+	config.rootdir = path.dirname(configdir);
 
 	/*------------ return config ------------*/
 	return config;

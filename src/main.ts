@@ -8,6 +8,7 @@ import cli_info from "./cli/info";
 import cli_help from "./cli/help";
 
 /*--------------------- CONFIG ---------------------*/
+import * as path from "path";
 import { Config } from "./interfaces/interfaces";
 import { read_config_folder } from "./config/config";
 
@@ -29,9 +30,7 @@ if (cli_options.command == "") {
 }
 
 /*--------------------- READ CONFIG ---------------------*/
-const config: Config = read_config_folder(CONFIGDIR);
-config.configdir = CONFIGDIR;
-config.executiondir = EXECUTIONDIR;
+const config: Config = read_config_folder(CONFIGDIR, EXECUTIONDIR);
 
 /*--------------------- EXECUTE COMMAND WITH CONFIG ---------------------*/
 if (cli_options.command == "watch") cli_watch(cli_options, config);
