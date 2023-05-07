@@ -2,8 +2,8 @@ import * as fs from "fs";
 import * as path from "path";
 import * as yaml from "yaml";
 
-import { Config } from "../interfaces/interfaces";
-import { walk_dir } from "../filesystem/filesystem";
+import { Config } from "../interfaces/interfaces.js";
+import { walk_dir } from "../filesystem/filesystem.js";
 import { config } from "process";
 
 /*--------------------- READ DIFFERENT CONFIG TYPES ---------------------*/

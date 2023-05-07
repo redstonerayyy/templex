@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { CliOptions, Config } from "../interfaces/interfaces";
+import { CliOptions, Config } from "../interfaces/interfaces.js";
 
 /*------------ try to create a new content piece ------------*/
 // errors if configuration does not exist

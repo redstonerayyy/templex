@@ -1,4 +1,4 @@
-import { CliOptions, Config } from "../interfaces/interfaces";
+import { CliOptions, Config } from "../interfaces/interfaces.js";
 
 /*------------ gives information about the system and the current configuration ------------*/
 export default function cli_info(config: Config, version: string) {

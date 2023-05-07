@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { CliOptions, Config } from "../interfaces/interfaces";
+import { CliOptions, Config } from "../interfaces/interfaces.js";
 
 // build the whole site and watch for file
 // changes to rebuild the site efficiently

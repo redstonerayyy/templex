@@ -1,16 +1,17 @@
 /*--------------------- CLI ---------------------*/
-import { CliOptions } from "./interfaces/interfaces";
-import { parse_cli_options } from "./cli/cli";
-import cli_watch from "./cli/watch";
-import cli_build from "./cli/build";
-import cli_new from "./cli/new";
-import cli_info from "./cli/info";
-import cli_help from "./cli/help";
+import { CliOptions } from "./interfaces/interfaces.js";
+import { parse_cli_options } from "./cli/cli.js";
+import cli_watch from "./cli/watch.js";
+import cli_build from "./cli/build.js";
+import cli_new from "./cli/new.js";
+import cli_info from "./cli/info.js";
+import cli_help from "./cli/help.js";
+import cli_clean from "./cli/clean.js";
 
 /*--------------------- CONFIG ---------------------*/
 import * as path from "path";
-import { Config } from "./interfaces/interfaces";
-import { read_config_folder } from "./config/config";
+import { Config } from "./interfaces/interfaces.js";
+import { read_config_folder } from "./config/config.js";
 
 /*--------------------- CONSTANTS ---------------------*/
 let CONFIGDIR: string = "./config";
@@ -37,3 +38,4 @@ if (cli_options.command == "watch") cli_watch(cli_options, config);
 if (cli_options.command == "build") cli_build(cli_options, config);
 if (cli_options.command == "new") cli_new(cli_options, config);
 if (cli_options.command == "info") cli_info(config, VERSION);
+if (cli_options.command == "clean") cli_clean(config);

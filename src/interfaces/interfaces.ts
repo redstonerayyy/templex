@@ -26,14 +26,8 @@ export interface Config {
 	site: { [key: string]: any };
 }
 
-// TEMPLATING
-export interface Dynamic {
-	matching: string;
-	directive: string;
-	index: number;
-}
-
-export interface Template {
+/*------------ TEMPLATING ------------*/
+export interface HTMLFile {
+	name: string;
 	filecontent: string;
-	dynamics: Array<Dynamic>;
 }

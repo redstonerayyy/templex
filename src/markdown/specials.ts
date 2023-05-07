@@ -1,8 +1,6 @@
 import * as fs from "fs";
 
-import { Template } from "../interfaces/interfaces";
-
-export function read_html_template(filepath: string): Template {
+export function read_html_template(filepath: string) {
 	const filecontent = fs.readFileSync(filepath, { encoding: "utf-8" });
 
 	let dynamics = [...filecontent.matchAll(/{{([a-zA-Z0-9". ]*)}}/gm)].map(

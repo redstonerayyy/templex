@@ -12,10 +12,10 @@
 // options:
 //     --configdir [path/to/configdir]
 
-import { CliOptions } from "../interfaces/interfaces";
+import { CliOptions } from "../interfaces/interfaces.js";
 
 /*--------------------- available commands, options, flags ---------------------*/
-const commands: string[] = ["watch", "build", "new", "info"];
+const commands: string[] = ["watch", "build", "new", "info", "clean"];
 const options: string[] = ["configdir"];
 
 /*--------------------- parse and check the cli arguments ---------------------*/

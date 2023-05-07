@@ -13,6 +13,7 @@
 	"bin": {
 		"templex": "./dist/main.js"
 	},
+	"type": "module",
 	"dependencies": {
 		"@highlightjs/cdn-assets": "^11.7.0",
 		"chokidar": "^3.5.3",

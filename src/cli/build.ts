@@ -4,6 +4,7 @@ import * as path from "path";
 import { CliOptions, Config } from "../interfaces/interfaces.js";
 import { make_static } from "../static/static.js";
 import { make_processed } from "../processed/processed.js";
+import { make_markdown } from "../markdown/markdown.js";
 
 /*------------ function to build the site for deployment ------------*/
 // optimizes the build for minmal size and load time
@@ -21,4 +22,7 @@ export default function cli_build(cli_options: CliOptions, config: Config) {
 
 	/*------------ process assets ------------*/
 	make_processed(processeddir, publicdir);
+
+	/*------------ make markdown ------------*/
+	make_markdown(config);
 }
