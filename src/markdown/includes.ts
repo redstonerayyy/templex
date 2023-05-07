@@ -1,12 +1,12 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { Dictionary, Template } from "../interfaces/interfaces";
+import { Template } from "../interfaces/interfaces";
 
 export function process_template_includes(
 	filename: string,
 	template: Template,
-	includes: Dictionary
+	includes: { [key: string]: any }
 ): Template {
 	let index = 0;
 	while (index < template.dynamics.length) {

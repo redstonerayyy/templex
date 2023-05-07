@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { Dictionary, Config } from "../interfaces/interfaces";
+import { Config } from "../interfaces/interfaces";
 import { walk_dir } from "../filesystem/filesystem";
 import { read_html_template } from "./specials";
 import { process_template_includes } from "./includes";
@@ -16,7 +16,7 @@ export function makes_sites(
 
 	// read include files
 	const includepaths = walk_dir(path.join(layoutdir, "includes"));
-	const includes: Dictionary = {};
+	const includes: { [key: string]: any } = {};
 
 	for (const includepath of includepaths) {
 		includes[path.basename(includepath)] = read_html_template(includepath);
@@ -28,7 +28,7 @@ export function makes_sites(
 
 	// read special files
 	const specialpaths = walk_dir(path.join(layoutdir, "specials"));
-	const specials: Dictionary = {};
+	const specials: { [key: string]: any } = {};
 
 	for (const specialpath of specialpaths) {
 		specials[path.basename(specialpath)] = read_html_template(specialpath);
@@ -46,7 +46,7 @@ export function makes_sites(
 
 	// read template files
 	const templatepaths = walk_dir(path.join(layoutdir, "templates"));
-	const templates: Dictionary = {};
+	const templates: { [key: string]: any } = {};
 
 	for (const templatepath of templatepaths) {
 		templates[path.basename(templatepath)] =

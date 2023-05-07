@@ -20,14 +20,7 @@ export interface Config {
 	contentdir: string;
 	layoutdir: string;
 	scaffolddir: string;
-	site: {
-		menu: [
-			{
-				name: string;
-				url: string;
-			}
-		];
-	};
+	site: { [key: string]: any };
 }
 
 // TEMPLATING
@@ -40,9 +33,4 @@ export interface Dynamic {
 export interface Template {
 	filecontent: string;
 	dynamics: Array<Dynamic>;
-}
-
-// GENERAL
-export interface Dictionary {
-	[key: string]: any;
 }

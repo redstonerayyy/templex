@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as yaml from "yaml";
 
-import { Config, Dictionary } from "../interfaces/interfaces";
+import { Config } from "../interfaces/interfaces";
 import { walk_dir } from "../filesystem/filesystem";
 import { config } from "process";
 
@@ -31,43 +31,28 @@ export function read_yml_config(filepath: string): Config {
 
 /*--------------------- GATHER ALL CONFIG FILES ---------------------*/
 export function read_config_folder(configdir: string) {
-	// gather all config file paths
+	/*------------ gather all config file paths ------------*/
 	if (!fs.existsSync(configdir)) {
 		console.log(`Can't find config folder ${configdir} !`);
 		process.exit();
 	}
 
-	const configpaths = walk_dir(configdir);
+	/*------------ config ------------*/
+	let config: Config;
 
-	// read all config files
-	const configs: Dictionary = {};
+	/*------------ read config file ------------*/
+	const configpathyml: string = path.join(configdir, "config.yml");
+	const configpathjson: string = path.join(configdir, "config.json");
 
-	for (const configpath of configpaths) {
-		if (path.extname(configpath) == ".json") {
-			configs[configpath] = read_json_config(configpath);
-		} else if (path.extname(configpath) == ".yml") {
-			configs[configpath] = read_yml_config(configpath);
-		}
+	if (fs.existsSync(configpathyml)) {
+		config = read_yml_config(configpathyml);
+	} else if (fs.existsSync(configpathjson)) {
+		config = read_json_config(configpathjson);
+	} else {
+		console.log(`Can't find config.yml or config.json in config folder!`);
+		process.exit();
 	}
 
-	// merge config files into main config
-	const mergedconfig: Config = {
-		title: "",
-		publicdir: "",
-		staticdir: "",
-		processeddir: "",
-		contentdir: "",
-		layoutdir: "",
-		scaffolddir: "",
-		site: {
-			menu: [
-				{
-					name: "",
-					url: "",
-				},
-			],
-		},
-	};
-
-	return mergedconfig;
+	/*------------ return config ------------*/
+	return config;
 }
