@@ -11,7 +11,7 @@ export function read_html_files(dir: string): Array<HTMLFile> {
 	for (const p of paths) {
 		let filecontent: string = "" + fs.readFileSync(p);
 		let f: HTMLFile = {
-			name: path.parse(p).name,
+			name: path.parse(p).base,
 			filecontent: filecontent,
 		};
 		htmlfiles.push(f);
