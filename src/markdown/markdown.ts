@@ -76,5 +76,21 @@ export function make_markdown(config: Config, publicdir: string) {
 	// insert md content into html template
 	// use nunjucks to replace variables
 
-	console.log(markdownfiles);
+	for (const mdfile of markdownfiles) {
+		/*------------ get metadata ------------*/
+
+		/*------------ make includes ------------*/
+
+		/*------------ write file content ------------*/
+		const splitted = mdfile.split(path.sep);
+		const outpath = path.join(
+			publicdir,
+			splitted.slice(splitted.indexOf("content") + 1).join(path.sep)
+		);
+
+		if (!fs.existsSync(path.dirname(outpath)))
+			fs.mkdirSync(path.dirname(outpath));
+
+		fs.writeFileSync(outpath, "asdf", { encoding: "utf-8" });
+	}
 }
