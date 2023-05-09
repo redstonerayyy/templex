@@ -24,5 +24,5 @@ export default function cli_build(cli_options: CliOptions, config: Config) {
 	make_processed(processeddir, publicdir);
 
 	/*------------ make markdown ------------*/
-	make_markdown(config);
+	make_markdown(config, publicdir);
 }
