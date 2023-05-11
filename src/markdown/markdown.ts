@@ -6,6 +6,7 @@ import { Config, HTMLFile } from "../interfaces/interfaces.js";
 import { read_html_files } from "./html.js";
 import { apply_includes } from "./include.js";
 import { walk_dir } from "../filesystem/filesystem.js";
+import { parse_metadata } from "./metadata.js";
 
 /*------------ function to process all markdown files ------------*/
 export function make_markdown(config: Config, publicdir: string) {
@@ -40,11 +41,7 @@ export function make_markdown(config: Config, publicdir: string) {
 	/*------------ get content files ------------*/
 	const contentdir = path.join(config.rootdir, config.contentdir);
 
-	console.log(contentdir);
-
 	const contentfiles = [...walk_dir(contentdir)];
-
-	console.log(contentfiles);
 
 	const nonmarkdownfiles = contentfiles.filter(
 		(file) => path.extname(file) !== ".md"
@@ -77,9 +74,15 @@ export function make_markdown(config: Config, publicdir: string) {
 	// use nunjucks to replace variables
 
 	for (const mdfile of markdownfiles) {
-		/*------------ get metadata ------------*/
+		/*------------ read md file ------------*/
+		let mdfilecontent = fs.readFileSync(mdfile, { encoding: "utf-8" });
 
-		/*------------ make includes ------------*/
+		/*------------ parse metadata ------------*/
+		let metadata: { [key: string]: any } = parse_metadata(mdfilecontent);
+
+		/*------------ apply layout for page ------------*/
+
+		/*------------ insert metadata with nunjucks ------------*/
 
 		/*------------ write file content ------------*/
 		const splitted = mdfile.split(path.sep);
