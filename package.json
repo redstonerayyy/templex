@@ -6,8 +6,8 @@
 	"scripts": {
 		"dev": "yarn tsc --watch",
 		"start": "node dist/main.js",
-		"test": "node dist/main.js build --configdir ./test/config",
-		"clean": "rm -rf ./dist",
+		"test": "node dist/main.js build --configdir ./example/config",
+		"clean": "rm -rf ./dist && rm -rf ./example/public",
 		"build": "yarn tsc --build"
 	},
 	"bin": {

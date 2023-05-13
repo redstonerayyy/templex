@@ -8,12 +8,12 @@ export function parse_metadata(mdfilecontent: string) {
 	let metadataraw: string = match !== null ? match[1] : null;
 
 	/*------------ replace all metadata sections if present ------------*/
-	mdfilecontent = mdfilecontent.replaceAll(/---[ \n]*(.*)[ \n]*---/gs, "");
+	let newmdcontent = mdfilecontent.replaceAll(/---[ \n]*(.*)[ \n]*---/gs, "");
 
 	/*------------ parse metadata ------------*/
-	if (metadataraw === null) return {};
+	if (metadataraw === null) return [{}, newmdcontent];
 
-	let metadata: { [key: string]: any } = yaml.parse(metadataraw);
+	let metadata = yaml.parse(metadataraw);
 
-	return metadata;
+	return [metadata, newmdcontent];
 }

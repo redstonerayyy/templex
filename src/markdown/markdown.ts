@@ -20,6 +20,7 @@ export function make_markdown(config: Config, publicdir: string) {
 	/*------------ add includes into templates ------------*/
 	const templatespath: string = path.join(layoutdirpath, "templates");
 	const templates: Array<HTMLFile> = read_html_files(templatespath);
+	const layouts = templates.map((template) => path.parse(template.name).name);
 
 	apply_includes(includes, templates);
 
@@ -34,9 +35,6 @@ export function make_markdown(config: Config, publicdir: string) {
 	const sites: Array<HTMLFile> = read_html_files(sitespath);
 
 	apply_includes(includes, sites);
-
-	/*------------ markdown renderer ------------*/
-	const md = new Markdown({});
 
 	/*------------ get content files ------------*/
 	const contentdir = path.join(config.rootdir, config.contentdir);
@@ -67,6 +65,9 @@ export function make_markdown(config: Config, publicdir: string) {
 		fs.copyFileSync(nmdfile, outpath);
 	}
 
+	/*------------ markdown renderer ------------*/
+	const md = new Markdown({});
+
 	/*------------ for each markdown file ------------*/
 	// get metadata
 	// determine html files to use
@@ -78,12 +79,17 @@ export function make_markdown(config: Config, publicdir: string) {
 		let mdfilecontent = fs.readFileSync(mdfile, { encoding: "utf-8" });
 
 		/*------------ parse metadata ------------*/
-		let metadata: { [key: string]: any } = parse_metadata(mdfilecontent);
+		let metadata = parse_metadata(mdfilecontent);
 
-        /*------------ compile markdown to html ------------*/
+		/*------------ compile markdown to html ------------*/
+		let markdownhtml = md.render(metadata[1]);
 
-        /*------------ apply layout for page ------------*/
+		console.log(markdownhtml);
 
+		/*------------ apply layout for page ------------*/
+		if (layouts.includes(metadata[0].layouts)) {
+		} else {
+		}
 		/*------------ insert metadata with nunjucks ------------*/
 
 		/*------------ write file content ------------*/
