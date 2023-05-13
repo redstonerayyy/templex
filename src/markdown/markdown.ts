@@ -80,7 +80,9 @@ export function make_markdown(config: Config, publicdir: string) {
 		/*------------ parse metadata ------------*/
 		let metadata: { [key: string]: any } = parse_metadata(mdfilecontent);
 
-		/*------------ apply layout for page ------------*/
+        /*------------ compile markdown to html ------------*/
+
+        /*------------ apply layout for page ------------*/
 
 		/*------------ insert metadata with nunjucks ------------*/
 
