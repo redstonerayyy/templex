@@ -7,4 +7,4 @@ layout: post
 
 sdf
 asdfas
-![alt text](abc.png "Test title")
+![](abc.png)

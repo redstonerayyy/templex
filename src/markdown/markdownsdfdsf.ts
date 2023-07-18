@@ -6,7 +6,6 @@ import { Config, HTMLFile } from "../interfaces/interfaces.js";
 import { read_html_files } from "./html.js";
 import { apply_includes } from "./include.js";
 import { walk_dir } from "../filesystem/filesystem.js";
-import { parse_metadata } from "./metadata.js";
 
 /*------------ function to process all markdown files ------------*/
 export function build_pages(config: Config, publicdir: string) {
@@ -73,35 +72,4 @@ export function build_pages(config: Config, publicdir: string) {
 	// determine html files to use
 	// insert md content into html template
 	// use nunjucks to replace variables
-
-	for (const mdfile of markdownfiles) {
-		/*------------ read md file ------------*/
-		let mdfilecontent = fs.readFileSync(mdfile, { encoding: "utf-8" });
-
-		/*------------ parse metadata ------------*/
-		let metadata = parse_metadata(mdfilecontent);
-
-		/*------------ compile markdown to html ------------*/
-		let markdownhtml = md.render(metadata[1]);
-
-		console.log(markdownhtml);
-
-		/*------------ apply layout for page ------------*/
-		if (layouts.includes(metadata[0].layouts)) {
-		} else {
-		}
-		/*------------ insert metadata with nunjucks ------------*/
-
-		/*------------ write file content ------------*/
-		const splitted = mdfile.split(path.sep);
-		const outpath = path.join(
-			publicdir,
-			splitted.slice(splitted.indexOf("content") + 1).join(path.sep)
-		);
-
-		if (!fs.existsSync(path.dirname(outpath)))
-			fs.mkdirSync(path.dirname(outpath));
-
-		fs.writeFileSync(outpath, "asdf", { encoding: "utf-8" });
-	}
 }

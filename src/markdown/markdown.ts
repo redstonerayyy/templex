@@ -2,8 +2,9 @@ import Markdown from "markdown-it";
 import * as fs from "fs";
 import * as path from "path";
 
-import { Config, HTMLFile } from "../interfaces/interfaces.js";
+import { Config } from "../interfaces/interfaces.js";
 import { walk_dir } from "../filesystem/filesystem.js";
+import { extract_metadata } from "./metadata.js";
 
 /*------------ function to process all markdown files ------------*/
 export function build_pages(config: Config, publicdir: string) {
@@ -33,10 +34,13 @@ export function build_pages(config: Config, publicdir: string) {
 			/*------------ render markdown ------------*/
 		} else if (path.extname(cfile) === ".md") {
 			/*------------ read md file ------------*/
-			let mdfilecontent = fs.readFileSync(cfile, { encoding: "utf-8" });
+			let filecontent = fs.readFileSync(cfile, { encoding: "utf-8" });
+
+			/*------------ extract metadata ------------*/
+			let [metadata, markdown] = extract_metadata(filecontent);
 
 			/*------------ compile markdown to html ------------*/
-			let markdownhtml = md.render(mdfilecontent);
+			let markdownhtml = md.render(markdown);
 
 			/*------------ change outpath extension to .html ------------*/
 			outpath = outpath.replace(".md", ".html");

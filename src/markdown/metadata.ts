@@ -1,6 +1,6 @@
 import * as yaml from "yaml";
 
-export function parse_metadata(mdfilecontent: string) {
+export function extract_metadata(mdfilecontent: string) {
 	/*------------ get metadata string if present------------*/
 	let match: RegExpMatchArray = mdfilecontent.match(
 		/---[ \n]*([^-]*)[ \n]*---/s
@@ -8,7 +8,7 @@ export function parse_metadata(mdfilecontent: string) {
 	let metadataraw: string = match !== null ? match[1] : null;
 
 	/*------------ replace all metadata sections if present ------------*/
-	let newmdcontent = mdfilecontent.replaceAll(/---[ \n]*(.*)[ \n]*---/gs, "");
+	let newmdcontent = mdfilecontent.replace(/---[ \n]*(.*)[ \n]*---/s, "");
 
 	/*------------ parse metadata ------------*/
 	if (metadataraw === null) return [{}, newmdcontent];
