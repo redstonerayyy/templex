@@ -5,7 +5,7 @@ import { process_sass } from "./scss.js";
 import { walk_dir } from "../filesystem/filesystem.js";
 
 /*------------ check file extension, use custom process function for it ------------*/
-export function make_processed(processeddir: string, publicdir: string) {
+export function process_all(processeddir: string, publicdir: string) {
 	/*------------ walk directory and process files ------------*/
 	const paths = walk_dir(processeddir);
 	for (const p of paths) {

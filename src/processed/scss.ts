@@ -15,7 +15,7 @@ export function process_sass(filepath: string, publicdir: string) {
 	// remove
 	let outpath = path.join(
 		publicdir,
-		"css",
+		"processed",
 		path.parse(filepath).name + ".min.css"
 	);
 

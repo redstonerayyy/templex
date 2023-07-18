@@ -3,105 +3,49 @@ import * as fs from "fs";
 import * as path from "path";
 
 import { Config, HTMLFile } from "../interfaces/interfaces.js";
-import { read_html_files } from "./html.js";
-import { apply_includes } from "./include.js";
 import { walk_dir } from "../filesystem/filesystem.js";
-import { parse_metadata } from "./metadata.js";
 
 /*------------ function to process all markdown files ------------*/
-export function make_markdown(config: Config, publicdir: string) {
-	/*------------ path for layoutdir ------------*/
+export function build_pages(config: Config, publicdir: string) {
+	/*------------ directories ------------*/
 	const layoutdirpath: string = path.join(config.rootdir, config.layoutdir);
-
-	/*------------ read include files ------------*/
-	const includespath: string = path.join(layoutdirpath, "includes");
-	const includes: Array<HTMLFile> = read_html_files(includespath);
-
-	/*------------ add includes into templates ------------*/
-	const templatespath: string = path.join(layoutdirpath, "templates");
-	const templates: Array<HTMLFile> = read_html_files(templatespath);
-	const layouts = templates.map((template) => path.parse(template.name).name);
-
-	apply_includes(includes, templates);
-
-	/*------------ add includes into specials ------------*/
-	const specialspath: string = path.join(layoutdirpath, "specials");
-	const specials: Array<HTMLFile> = read_html_files(specialspath);
-
-	apply_includes(includes, specials);
-
-	/*------------ add includes into sites ------------*/
-	const sitespath: string = path.join(layoutdirpath, "sites");
-	const sites: Array<HTMLFile> = read_html_files(sitespath);
-
-	apply_includes(includes, sites);
-
-	/*------------ get content files ------------*/
 	const contentdir = path.join(config.rootdir, config.contentdir);
 
+	/*------------ get content files ------------*/
 	const contentfiles = [...walk_dir(contentdir)];
 
-	const nonmarkdownfiles = contentfiles.filter(
-		(file) => path.extname(file) !== ".md"
-	);
-
-	const markdownfiles = contentfiles.filter(
-		(file) => path.extname(file) == ".md"
-	);
-
-	/*------------ for each non markdown file ------------*/
-	// just copy file
-	// overwrite other files
-	for (const nmdfile of nonmarkdownfiles) {
-		const splitted = nmdfile.split(path.sep);
-		const outpath = path.join(
-			publicdir,
-			splitted.slice(splitted.indexOf("content") + 1).join(path.sep)
-		);
-
-		if (!fs.existsSync(path.dirname(outpath)))
-			fs.mkdirSync(path.dirname(outpath));
-
-		fs.copyFileSync(nmdfile, outpath);
-	}
-
-	/*------------ markdown renderer ------------*/
 	const md = new Markdown({});
 
-	/*------------ for each markdown file ------------*/
-	// get metadata
-	// determine html files to use
-	// insert md content into html template
-	// use nunjucks to replace variables
-
-	for (const mdfile of markdownfiles) {
-		/*------------ read md file ------------*/
-		let mdfilecontent = fs.readFileSync(mdfile, { encoding: "utf-8" });
-
-		/*------------ parse metadata ------------*/
-		let metadata = parse_metadata(mdfilecontent);
-
-		/*------------ compile markdown to html ------------*/
-		let markdownhtml = md.render(metadata[1]);
-
-		console.log(markdownhtml);
-
-		/*------------ apply layout for page ------------*/
-		if (layouts.includes(metadata[0].layouts)) {
-		} else {
-		}
-		/*------------ insert metadata with nunjucks ------------*/
-
-		/*------------ write file content ------------*/
-		const splitted = mdfile.split(path.sep);
-		const outpath = path.join(
+	for (const cfile of contentfiles) {
+		/*------------ calculate outpath ------------*/
+		const splitted = cfile.split(path.sep);
+		let outpath = path.join(
 			publicdir,
 			splitted.slice(splitted.indexOf("content") + 1).join(path.sep)
 		);
 
-		if (!fs.existsSync(path.dirname(outpath)))
-			fs.mkdirSync(path.dirname(outpath));
+		/*------------ just copy non markdown ------------*/
+		if (path.extname(cfile) !== ".md") {
+			if (!fs.existsSync(path.dirname(outpath)))
+				fs.mkdirSync(path.dirname(outpath));
 
-		fs.writeFileSync(outpath, "asdf", { encoding: "utf-8" });
+			fs.copyFileSync(cfile, outpath);
+			/*------------ render markdown ------------*/
+		} else if (path.extname(cfile) === ".md") {
+			/*------------ read md file ------------*/
+			let mdfilecontent = fs.readFileSync(cfile, { encoding: "utf-8" });
+
+			/*------------ compile markdown to html ------------*/
+			let markdownhtml = md.render(mdfilecontent);
+
+			/*------------ change outpath extension to .html ------------*/
+			outpath = outpath.replace(".md", ".html");
+
+			/*------------ write html to file ------------*/
+			if (!fs.existsSync(path.dirname(outpath)))
+				fs.mkdirSync(path.dirname(outpath));
+
+			fs.writeFileSync(outpath, markdownhtml, { encoding: "utf-8" });
+		}
 	}
 }
