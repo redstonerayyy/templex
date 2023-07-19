@@ -5,6 +5,7 @@ import * as path from "path";
 import { Config } from "../interfaces/interfaces.js";
 import { walk_dir } from "../filesystem/filesystem.js";
 import { extract_metadata } from "./metadata.js";
+import { render_file } from "../nunjucks/renderfile.js";
 
 /*------------ function to process all markdown files ------------*/
 export function build_pages(config: Config, publicdir: string) {
@@ -41,6 +42,20 @@ export function build_pages(config: Config, publicdir: string) {
 
 			/*------------ compile markdown to html ------------*/
 			let markdownhtml = md.render(markdown);
+
+			/*------------ apply nunjucks styling ------------*/
+			const templatepath = path.join(
+				layoutdirpath,
+				"templates",
+				metadata.layout + ".njk"
+			);
+
+			if (fs.existsSync(templatepath)) {
+				markdownhtml = render_file(layoutdirpath, templatepath, {
+					content: markdownhtml,
+					...metadata,
+				});
+			}
 
 			/*------------ change outpath extension to .html ------------*/
 			outpath = outpath.replace(".md", ".html");
