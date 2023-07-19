@@ -16,7 +16,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@highlightjs/cdn-assets": "^11.7.0",
+		"@highlightjs/cdn-assets": "^11.8.0",
 		"chokidar": "^3.5.3",
 		"markdown-it": "^13.0.1",
 		"nunjucks": "^3.2.4",
