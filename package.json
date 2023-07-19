@@ -5,10 +5,11 @@
 	"version": "0.1.0",
 	"scripts": {
 		"dev": "yarn tsc --watch",
+		"build": "yarn tsc --build",
 		"start": "node dist/main.js",
 		"test": "node dist/main.js build --configdir ./example/config",
-		"clean": "rm -rf ./dist && rm -rf ./example/public",
-		"build": "yarn tsc --build"
+		"doc": "cp -r ./doc/* ./example/content/ && node dist/main.js build --configdir ./example/config",
+		"clean": "rm -rf ./dist && rm -rf ./example/public && rm -rf ./public"
 	},
 	"bin": {
 		"templex": "./dist/main.js"
