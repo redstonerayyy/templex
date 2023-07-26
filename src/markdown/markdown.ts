@@ -16,7 +16,7 @@ export function build_pages(config: Config, publicdir: string) {
 	/*------------ get content files ------------*/
 	const contentfiles = [...walk_dir(contentdir)];
 
-	const md = new Markdown({ linkify: true });
+	const md = new Markdown({ html: true, linkify: true, typographer: true });
 
 	for (const cfile of contentfiles) {
 		/*------------ calculate outpath ------------*/
