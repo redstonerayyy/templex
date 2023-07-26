@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import sass from "sass";
+import * as sass from "sass";
 
 /*------------ process a scss or sass file ------------*/
 // takes in a filepath and outputs the file to publicdir/css

@@ -17,3 +17,4 @@ and build to `./public`. It can be viewed in the browser with
 ### TODOs
 
 -   make an example theme for templex
+-   migrate config of directories into code to make it leaner
