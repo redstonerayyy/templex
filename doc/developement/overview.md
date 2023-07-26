@@ -12,10 +12,10 @@ It can deployed using a webserver like apache or nginx.
 ### Folder Mappings
 
 -   static -> public/static
--   processed -> public/processed/
+-   processed -> public/processed
 -   content/_ -> public/_
 
-# creat post
+### creat post
 
 $ pwd
 -> ~/Github/templex
