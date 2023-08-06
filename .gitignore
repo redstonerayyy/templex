@@ -4,7 +4,7 @@
 
 # build outputs
 /dist
-/test/public
+**/public
 
 # IDE stuff
 /.vscode

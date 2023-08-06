@@ -1,6 +1,6 @@
 {
-	"title": "A Certain Scientific Tech Blog",
-	"publicdir": "./public",
+	"title": "Templex Documentation",
+	"publicdir": "../public",
 	"staticdir": "./static",
 	"processeddir": "./processed",
 	"contentdir": "./content",
