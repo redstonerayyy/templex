@@ -12,16 +12,8 @@ $white: #ffffff;
     background-color: $grey;
 }
 
-#headline-container {
+.flex-centered {
     display: flex;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
-
-    h1 {
-        font-size: 60px;
-        font-weight: bold;
-        margin: 40px;
-    }
 }
-
-
