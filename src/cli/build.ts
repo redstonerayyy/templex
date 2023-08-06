@@ -9,12 +9,11 @@ import { build_pages } from "../markdown/markdown.js";
 /*------------ function to build the site for deployment ------------*/
 // optimizes the build for minmal size and load time
 export default function cli_build(cli_options: CliOptions, config: Config) {
+	/*------------ directories ------------*/
 	const rootdir = config.rootdir;
 
-	/*------------ directories ------------*/
 	const staticdir = path.join(rootdir, config.staticdir);
 	const processeddir = path.join(rootdir, config.processeddir);
-
 	const publicdir = path.join(rootdir, config.publicdir);
 
 	/*------------ copy static dir ------------*/

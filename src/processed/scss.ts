@@ -9,6 +9,7 @@ export function process_sass(filepath: string, publicdir: string) {
 	/*------------ compile sass file ------------*/
 	let css = sass.compile(filepath, {
 		style: "compressed",
+		sourceMap: false,
 	}).css;
 
 	/*------------ write the css output to file, create folder structure ------------*/

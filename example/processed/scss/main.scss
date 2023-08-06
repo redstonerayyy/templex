@@ -1,0 +1,10 @@
+@import "vars.scss";
+
+* {
+    font-family: $roboto;
+}
+
+pre > * {
+    font-family: $notosansmono;
+    font-size: 12px;
+}
