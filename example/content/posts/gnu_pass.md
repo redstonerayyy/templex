@@ -5,7 +5,7 @@ lastchanges: "6.8.23"
 layout: post
 ---
 
-### setup
+## setup
 
 ```sh
 sudo pacman -Syu pass # install gnu pass

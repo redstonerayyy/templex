@@ -10,8 +10,14 @@ import { render_file } from "../nunjucks/renderfile.js";
 /*------------ function to process all markdown files ------------*/
 export function build_pages(config: Config, publicdir: string) {
 	/*------------ directories ------------*/
-	const layoutdirpath: string = path.join(config.rootdir, config.layoutdir);
-	const contentdir = path.join(config.rootdir, config.contentdir);
+	const layoutdirpath: string = path.join(
+		config.directories.root,
+		config.directories.layout
+	);
+	const contentdir = path.join(
+		config.directories.root,
+		config.directories.content
+	);
 
 	/*------------ get content files ------------*/
 	const contentfiles = [...walk_dir(contentdir)];

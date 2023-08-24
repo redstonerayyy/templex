@@ -20,11 +20,15 @@ export default function cli_new(cli_options: CliOptions, config: Config) {
 	}
 
 	/*------------ check if type of new file was supplied, else use default ------------*/
-	let typepath = path.join(config.rootdir, config.scaffolddir, "post.md");
+	let typepath = path.join(
+		config.directories.root,
+		config.directories.scaffold,
+		"post.md"
+	);
 	if (cli_options.arguments.length > 1)
 		typepath = path.join(
-			config.rootdir,
-			config.scaffolddir,
+			config.directories.root,
+			config.directories.scaffold,
 			cli_options.arguments[1] + ".md"
 		);
 

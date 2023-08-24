@@ -1,9 +1,4 @@
-/*--------------------- CLI OPTiONS ---------------------*/
-export interface Option {
-	option: string;
-	value: string;
-}
-
+/*--------------------- CLI OPTIONS ---------------------*/
 export interface CliOptions {
 	command: string;
 	arguments: string[];
@@ -14,16 +9,20 @@ export interface CliOptions {
 /*--------------------- CONFIG ---------------------*/
 export interface Config {
 	title: string;
-	configdir: string;
-	executiondir: string;
-	rootdir: string;
-	publicdir: string;
-	staticdir: string;
-	processeddir: string;
-	contentdir: string;
-	layoutdir: string;
-	scaffolddir: string;
-	site: { [key: string]: any };
+	directories: {
+		cwd: string;
+		config: string;
+		root: string;
+		public: string;
+		static: string;
+		processed: string;
+		content: string;
+		layout: string;
+		themes: string;
+		scaffold: string;
+	};
+	data: { [key: string]: any };
+	[key: string]: any; // make typescrpt happy
 }
 
 /*------------ TEMPLATING ------------*/

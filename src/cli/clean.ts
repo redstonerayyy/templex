@@ -6,8 +6,8 @@ import { Config } from "../interfaces/interfaces.js";
 /*------------ clean output of build ------------*/
 export default function cli_clean(config: Config) {
 	/*------------ directories ------------*/
-	const rootdir = config.rootdir;
-	const publicdir = path.join(rootdir, config.publicdir);
+	const rootdir = config.directories.root;
+	const publicdir = path.join(rootdir, config.directories.public);
 
 	/*------------ delete publicdir ------------*/
 	if (fs.existsSync(publicdir)) {

@@ -12,17 +12,18 @@ import cli_build from "./build.js";
 // and reflect the changes
 export default function cli_watch(cli_options: CliOptions, config: Config) {
 	/*------------ directories ------------*/
-	const rootdir = config.rootdir;
+	const rootdir = config.directories.root;
 
-	const staticdir = path.join(rootdir, config.staticdir);
-	const processeddir = path.join(rootdir, config.processeddir);
-	const layoutdir = path.join(rootdir, config.layoutdir);
-	const contentdir = path.join(rootdir, config.contentdir);
+	const staticdir = path.join(rootdir, config.directories.static);
+	const processeddir = path.join(rootdir, config.directories.processed);
+	const layoutdir = path.join(rootdir, config.directories.layout);
+	const contentdir = path.join(rootdir, config.directories.content);
 
 	/*------------ build once before changes ------------*/
 	cli_build(cli_options, config);
 
 	/*------------ define watcher ------------*/
+	let change = false;
 	const watcher = chokidar
 		.watch([staticdir, processeddir, layoutdir, contentdir], {
 			persistent: true,
@@ -30,15 +31,34 @@ export default function cli_watch(cli_options: CliOptions, config: Config) {
 		.on("change", (event: string, path: any) => {
 			process.stdout.write(`Rebuilding ${event} ...`);
 			cli_build(cli_options, config);
+			change = true;
 			process.stdout.write("Done!\n");
 		});
 
 	/*------------ serve files on localhost ------------*/
-	const server = http.createServer((request, response) => {
-		return handler(request, response, {
-			public: path.join(config.rootdir, config.publicdir),
-			cleanUrls: true,
-		});
+	const server = http.createServer((req, res) => {
+		if (req.url === "/_reload") {
+			if (change) {
+				change = false;
+				res.writeHead(200, {
+					"Content-Type": "text/plain",
+				});
+				res.end("yes");
+			} else {
+				res.writeHead(200, {
+					"Content-Type": "text/plain",
+				});
+				res.end("no");
+			}
+		} else {
+			return handler(req, res, {
+				public: path.join(
+					config.directories.root,
+					config.directories.public
+				),
+				cleanUrls: true,
+			});
+		}
 	});
 
 	server.listen(8080, () => {
