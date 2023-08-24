@@ -5,7 +5,7 @@ import { CliOptions, Config } from "../interfaces/interfaces.js";
 import { copy_static } from "../static/static.js";
 import { process_all } from "../processed/processed.js";
 import { build_pages } from "../markdown/markdown.js";
-import inject_dev_scripts from "../util/devscripts.js";
+import inject_dev_scripts from "../util/reload.js";
 
 /*------------ function to build the site for deployment ------------*/
 // optimizes the build for minmal size and load time

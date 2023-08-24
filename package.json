@@ -4,8 +4,8 @@
 	"license": "GPL-3.0-or-later",
 	"version": "0.1.0",
 	"scripts": {
-		"build": "mkdir -p ./dist/util/_dev && cp ./src/util/_dev/* ./dist/util/_dev/ && yarn tsc --build",
-		"dev": "mkdir -p ./dist/util/_dev && cp ./src/util/_dev/* ./dist/util/_dev/ && yarn tsc --watch",
+		"build": "yarn tsc --build",
+		"dev": "yarn tsc --watch",
 		"clean": "rm -rf ./dist && rm -rf ./public",
 		"start": "node dist/main.js",
 		"test": "node dist/main.js build --configdir ./example/config",
