@@ -4,12 +4,13 @@
 	"license": "GPL-3.0-or-later",
 	"version": "0.1.0",
 	"scripts": {
-		"dev": "yarn tsc --watch",
 		"build": "yarn tsc --build",
+		"dev": "yarn tsc --watch",
+		"clean": "rm -rf ./dist && rm -rf ./public",
 		"start": "node dist/main.js",
 		"test": "node dist/main.js build --configdir ./example/config",
-		"doc": "yarn && yarn tsc --build && cp -r ./doc/* ./example/content/ && node dist/main.js build --configdir ./example/config",
-		"clean": "rm -rf ./dist && rm -rf ./public"
+		"watch": "yarn start watch --configdir ./example/config",
+		"doc": "yarn && yarn tsc --build && cp -r ./doc/* ./example/content/ && node dist/main.js build --configdir ./example/config"
 	},
 	"bin": {
 		"templex": "./dist/main.js"
@@ -21,12 +22,15 @@
 		"markdown-it": "^13.0.1",
 		"nunjucks": "^3.2.4",
 		"sass": "^1.66.1",
+		"serve-handler": "^6.1.5",
 		"yaml": "^2.3.1"
 	},
 	"devDependencies": {
+		"@types/live-server": "^1.2.1",
 		"@types/markdown-it": "^13.0.0",
 		"@types/node": "^20.5.3",
 		"@types/nunjucks": "^3.2.3",
+		"@types/serve-handler": "^6.1.1",
 		"typescript": "^5.1.6"
 	}
 }

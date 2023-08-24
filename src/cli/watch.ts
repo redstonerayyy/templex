@@ -1,5 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
+import http from "http";
+import handler from "serve-handler";
 
 import { CliOptions, Config } from "../interfaces/interfaces.js";
 import chokidar from "chokidar";
@@ -17,14 +19,29 @@ export default function cli_watch(cli_options: CliOptions, config: Config) {
 	const layoutdir = path.join(rootdir, config.layoutdir);
 	const contentdir = path.join(rootdir, config.contentdir);
 
+	/*------------ build once before changes ------------*/
+	cli_build(cli_options, config);
+
 	/*------------ define watcher ------------*/
 	const watcher = chokidar
 		.watch([staticdir, processeddir, layoutdir, contentdir], {
 			persistent: true,
 		})
 		.on("change", (event: string, path: any) => {
-			console.log(`${event} was changed. Rebuilding ...`);
+			process.stdout.write(`Rebuilding ${event} ...`);
 			cli_build(cli_options, config);
-			console.log("Done");
+			process.stdout.write("Done!\n");
 		});
+
+	/*------------ serve files on localhost ------------*/
+	const server = http.createServer((request, response) => {
+		return handler(request, response, {
+			public: path.join(config.rootdir, config.publicdir),
+			cleanUrls: true,
+		});
+	});
+
+	server.listen(8080, () => {
+		console.log("Running at http://localhost:8080!");
+	});
 }
