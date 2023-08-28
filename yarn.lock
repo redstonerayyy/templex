@@ -17,10 +17,10 @@
   resolved "https://registry.yarnpkg.com/@types/live-server/-/live-server-1.2.1.tgz#4d6588e1b888b415ed5fe8480224dcd225bc9eba"
   integrity sha512-Yind497JdcZT8L9FF7u73nq44KmamiDitsZJEwrAi/pgBhFHThNvtR+2Z/YGNSMjyUoDBFdvhVSQmod06yd1Ng==
 
-"@types/markdown-it@^13.0.0":
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/@types/markdown-it/-/markdown-it-13.0.0.tgz#05e82614aa6d305a4d8efe24056d8879a9042970"
-  integrity sha512-mPTaUl5glYfzdJFeCsvhXQwZKdyszNAZcMm5ZTP5SfpTu+vIbog7J3z8Fa4x/Fzv5TB4R6OA/pHBYIYmkYOWGQ==
+"@types/markdown-it@^13.0.1":
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/@types/markdown-it/-/markdown-it-13.0.1.tgz#2f45bd54315f5db2d9bd909ec7fd4d994cf75df4"
+  integrity sha512-SUEb8Frsxs3D5Gg9xek6i6EG6XQ5s+O+ZdQzIPESZVZw3Pv3CPQfjCJBI+RgqZd1IBeu18S0Rn600qpPnEK37w==
   dependencies:
     "@types/linkify-it" "*"
     "@types/mdurl" "*"
