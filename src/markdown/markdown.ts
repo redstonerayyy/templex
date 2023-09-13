@@ -29,7 +29,9 @@ export function build_pages(config: Config, publicdir: string) {
 		const splitted = cfile.split(path.sep);
 		let outpath = path.join(
 			publicdir,
-			splitted.slice(splitted.indexOf("content") + 1).join(path.sep)
+			splitted
+				.slice(splitted.indexOf(config.directories.content) + 1)
+				.join(path.sep)
 		);
 
 		/*------------ just copy non markdown ------------*/

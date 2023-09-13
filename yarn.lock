@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@highlightjs/cdn-assets@^11.8.0":
-  version "11.8.0"
-  resolved "https://registry.yarnpkg.com/@highlightjs/cdn-assets/-/cdn-assets-11.8.0.tgz#e3aa9f20bf742b50bd7b1d60a24c8e7d124a602f"
-  integrity sha512-gkfCH4xGBGY9xPaW+t26WpgnfpDhNhB5RtVUDLx3MHkC7ZrmKeIxXsfjzOiuOnEgRk+vydlY6XeOeglh+eVhyg==
-
 "@types/linkify-it@*":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@types/linkify-it/-/linkify-it-3.0.2.tgz#fd2cd2edbaa7eaac7e7f3c1748b52a19143846c9"

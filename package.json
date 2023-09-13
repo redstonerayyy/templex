@@ -2,22 +2,21 @@
 	"name": "templex",
 	"author": "Redstonerayy",
 	"license": "GPL-3.0-or-later",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"scripts": {
 		"build": "yarn tsc --build",
 		"dev": "yarn tsc --watch",
 		"clean": "rm -rf ./dist && rm -rf ./public",
 		"start": "node dist/main.js",
-		"test": "node dist/main.js build --configdir ./example/config",
-		"watch": "yarn start watch --configdir ./example/config",
-		"doc": "yarn && yarn tsc --build && cp -r ./doc/* ./example/content/ && node dist/main.js build --configdir ./example/config"
+		"test": "node dist/main.js build",
+		"watch": "node dist/main.js watch",
+		"doc": "yarn && yarn build && yarn test"
 	},
 	"bin": {
 		"templex": "./dist/main.js"
 	},
 	"type": "module",
 	"dependencies": {
-		"@highlightjs/cdn-assets": "^11.8.0",
 		"chokidar": "^3.5.3",
 		"markdown-it": "^13.0.1",
 		"nunjucks": "^3.2.4",
