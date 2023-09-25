@@ -12,9 +12,6 @@
 		"watch": "node dist/main.js watch",
 		"doc": "yarn && yarn build && yarn test"
 	},
-	"bin": {
-		"templex": "./dist/main.js"
-	},
 	"type": "module",
 	"dependencies": {
 		"chokidar": "^3.5.3",

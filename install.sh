@@ -1,5 +1,8 @@
-git clone https://github.com/Redstonerayy/templex/ ~/.cache/templex
-cd ~/.cache/templex
+git clone https://github.com/Redstonerayy/templex/ ~/.templex
+cd ~/.templex
 npm install
 npm run build
-node dist/main.js build
+echo 'alias templex="node ~/.templex/dist/main.js"' >> ~/.zshrc
+source ~/.zshrc
+echo 'alias templex="node ~/.templex/dist/main.js"' >> ~/.bashrc
+source ~/.bashrc
