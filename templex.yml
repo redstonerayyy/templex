@@ -1,0 +1,6 @@
+title: "Templex Documentation"
+dirs:
+  content: "./doc"
+  layout: "./layout"
+  static: "./static"
+  templates: "./templates"

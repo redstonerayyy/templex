@@ -2,7 +2,6 @@ import * as sass from "sass";
 import Markdown from "markdown-it";
 import nunjucks from "nunjucks";
 import * as yaml from "yaml";
-
 import * as path from "path";
 
 export function scss_to_css(filepath: string): string {
@@ -40,4 +39,17 @@ export function extract_metadata(mdcontent: string): [string, object] {
 	if (match === null) return [newmdcontent, {}];
 
 	return [newmdcontent, yaml.parse(match[1])];
+}
+
+export function append_reload_script(html: string): string {
+	return (
+		html +
+		`<script>
+        const pull = setInterval(async () => {
+            const res = await fetch("/_reload");
+            const data = await res.text();
+            if (data === "yes") window.location.reload();
+        }, 1000);
+        </script>`
+	);
 }
