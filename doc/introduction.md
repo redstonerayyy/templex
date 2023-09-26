@@ -1,3 +1,10 @@
+---
+title: Introduction to the Templex Documentation
+releasedate: "26.9.23"
+lastchanged: "26.9.23"
+type: post
+---
+
 ## What is Templex?
 
 Templex is an in-developement tool for generating static websites.
@@ -16,11 +23,3 @@ yarn install
 yarn build
 node dist/main.js build
 ```
-
-## Todo
-
--   watch command w/ automatic reload
--   proper styling and documentation
--   permalinks
--   code highlighting
--   better cli

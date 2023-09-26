@@ -4,4 +4,3 @@ dirs:
   content: "./doc"
   layout: "./layout"
   static: "./static"
-  templates: "./templates"

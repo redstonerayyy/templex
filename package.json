@@ -7,10 +7,7 @@
 		"build": "yarn tsc --build",
 		"dev": "yarn tsc --watch",
 		"clean": "rm -rf ./dist && rm -rf ./public",
-		"start": "node dist/main.js",
-		"test": "node dist/main.js build",
-		"watch": "node dist/main.js watch",
-		"doc": "yarn && yarn build && yarn test"
+		"start": "node dist/main.js"
 	},
 	"type": "module",
 	"dependencies": {
