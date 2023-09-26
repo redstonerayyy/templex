@@ -4,7 +4,7 @@ import * as path from "path";
 import { CliOptions, Config } from "../interfaces/interfaces.js";
 import { copy_static } from "../static/static.js";
 import { process_all } from "../processed/processed.js";
-import { build_pages } from "../markdown/markdown.js";
+// import { build_pages } from "../markdown/markdown.js";
 import inject_dev_scripts from "../util/reload.js";
 
 /*------------ function to build the site for deployment ------------*/
@@ -24,7 +24,7 @@ export default function cli_build(cli_options: CliOptions, config: Config) {
 	process_all(processeddir, publicdir);
 
 	/*------------ make markdown ------------*/
-	build_pages(config, publicdir);
+	// build_pages(config, publicdir);
 
 	/*------------ inject dev scripts ------------*/
 	inject_dev_scripts(config, publicdir);

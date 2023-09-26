@@ -1,6 +1,6 @@
 ---
 title: Quick Guide on how to setup and use GNU Pass for password management (on Linux)
-date: "6.8.23"
+date: "6.8.--23"
 lastchanges: "6.8.23"
 layout: post
 ---
