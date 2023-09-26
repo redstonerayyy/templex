@@ -17,6 +17,24 @@ export function read_yml_config(filepath: string) {
 	return yaml.parse(filecontent);
 }
 
+export function* walk_directory(directory: string): IterableIterator<string> {
+	for (const p of fs.readdirSync(directory, { withFileTypes: true })) {
+		const entry = path.join(directory, p.name);
+		if (p.isDirectory()) yield* walk_directory(entry);
+		else if (p.isFile()) yield entry;
+	}
+}
+
+export function replace_path_parts(filepath: string, replaces: string[]) {
+	const splitted = cfile.split(path.sep);
+	let outpath = path.join(
+		publicdir,
+		splitted
+			.slice(splitted.indexOf(config.directories.content) + 1)
+			.join(path.sep)
+	);
+}
+
 export function copy_directory(origin: string, destination: string) {
 	fs.cpSync(origin, destination, {
 		recursive: true,
@@ -26,13 +44,5 @@ export function copy_directory(origin: string, destination: string) {
 export function remove_directory(directory: string) {
 	if (fs.existsSync(directory)) {
 		fs.rmSync(directory, { recursive: true });
-	}
-}
-
-export function* walk_directory(directory: string): IterableIterator<string> {
-	for (const p of fs.readdirSync(directory, { withFileTypes: true })) {
-		const entry = path.join(directory, p.name);
-		if (p.isDirectory()) yield* walk_directory(entry);
-		else if (p.isFile()) yield entry;
 	}
 }

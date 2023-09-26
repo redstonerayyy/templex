@@ -1,5 +1,6 @@
 title: "Templex Documentation"
 dirs:
+  public: "./public"
   content: "./doc"
   layout: "./layout"
   static: "./static"
