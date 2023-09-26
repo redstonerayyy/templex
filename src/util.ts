@@ -25,14 +25,20 @@ export function* walk_directory(directory: string): IterableIterator<string> {
 	}
 }
 
-export function replace_path_parts(filepath: string, replaces: string[]) {
-	const splitted = cfile.split(path.sep);
-	let outpath = path.join(
-		publicdir,
-		splitted
-			.slice(splitted.indexOf(config.directories.content) + 1)
-			.join(path.sep)
+export function get_output_path(filepath: string, dirs) {
+	const splitted = filepath.split(path.sep);
+	return path.join(
+		dirs.public,
+		splitted.slice(splitted.indexOf(dirs.content) + 1).join(path.sep)
 	);
+}
+
+export function write_file(filepath: string, filecontent: string) {
+	if (!fs.existsSync(path.dirname(filepath)))
+		fs.mkdirSync(path.dirname(filepath), { recursive: true });
+	fs.writeFileSync(filepath, filecontent, {
+		encoding: "utf-8",
+	});
 }
 
 export function copy_directory(origin: string, destination: string) {

@@ -1,3 +1,7 @@
+---
+type: post
+---
+
 # Overview of Templex
 
 ## What is Templex?

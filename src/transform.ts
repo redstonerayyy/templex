@@ -21,13 +21,17 @@ export function markdown_to_html(mdcontent: string): string {
 	return md.render(mdcontent);
 }
 
-export function nunjucks_to_html(filepath: string): string {
-	const env = nunjucks.configure(path.dirname(filepath), {
+export function nunjucks_to_html(nunjuckspath: string, data): string {
+	const env = nunjucks.configure(path.dirname(nunjuckspath), {
 		autoescape: false,
 	});
 
-	const template = env.getTemplate(path.basename(filepath), true);
-	return template.render();
+	const template = env.getTemplate(path.basename(nunjuckspath), true);
+	return template.render(data);
+}
+
+export function render_html(htmlstring: string, data): string {
+	return nunjucks.renderString(htmlstring, data);
 }
 
 export function extract_metadata(mdcontent: string): [string, object] {
