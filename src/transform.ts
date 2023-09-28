@@ -53,7 +53,7 @@ export function append_reload_script(html: string): string {
             const res = await fetch("/_reload");
             const data = await res.text();
             if (data === "yes") window.location.reload();
-        }, 1000);
+        }, 250);
         </script>`
 	);
 }

@@ -11,24 +11,24 @@ export default function build() {
 	process_files(dirs.static, dirs);
 }
 
-function process_files(directory, dirs) {
+export function process_files(directory, dirs, options = {}) {
 	const files = util.walk_directory(directory);
 
 	for (const file of files) {
 		if (path.extname(file) === ".md") {
-			transform_markdown(file, dirs);
+			build_markdown(file, dirs, options);
 		} else if (
 			path.extname(file) === ".scss" ||
 			path.extname(file) === ".sass"
 		) {
-			transform_scss(file, dirs);
+			build_scss(file, dirs);
 		} else {
 			copy_file(file, dirs);
 		}
 	}
 }
 
-function transform_markdown(filepath: string, dirs) {
+export function build_markdown(filepath: string, dirs, options = {}) {
 	const filecontent = fs.readFileSync(filepath, { encoding: "utf-8" });
 	let [markdown, metadata] = transform.extract_metadata(filecontent);
 
@@ -36,7 +36,9 @@ function transform_markdown(filepath: string, dirs) {
 
 	metadata["content"] = transform.markdown_to_html(markdown);
 	const layoutpath = path.join(dirs.layout, `${metadata["type"]}.njk`);
-	const outputhtml = transform.nunjucks_to_html(layoutpath, metadata);
+	let outputhtml = transform.nunjucks_to_html(layoutpath, metadata);
+
+	outputhtml = apply_options(outputhtml, options);
 
 	let outpath = util.get_output_path(filepath, dirs);
 	outpath = outpath.replace(".md", ".html");
@@ -44,12 +46,24 @@ function transform_markdown(filepath: string, dirs) {
 	util.write_file(outpath, outputhtml);
 }
 
-function transform_scss(filepath: string, dirs) {}
+function apply_options(html: string, options): string {
+	if (options.reload) {
+		html = transform.append_reload_script(html);
+	}
+	return html;
+}
 
-function copy_file(filepath: string, dirs) {
+export function build_scss(filepath: string, dirs) {
+	const css = transform.scss_to_css(filepath);
+
+	let outpath = util.get_output_path(filepath, dirs);
+	outpath = outpath.replace(".scss", ".min.css");
+
+	util.write_file(outpath, css);
+}
+
+export function copy_file(filepath: string, dirs) {
 	fs.cpSync(filepath, util.get_output_path(filepath, dirs), {
 		recursive: true,
 	});
 }
-
-function process_static(directories) {}

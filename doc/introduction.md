@@ -3,6 +3,7 @@ title: Introduction to the Templex Documentation
 releasedate: "26.9.23"
 lastchanged: "26.9.23"
 type: post
+summary: "Explains what Templex is. Explains how and when to use Templex. Gives Instructions for a setup with NodeJS."
 ---
 
 ## What is Templex?

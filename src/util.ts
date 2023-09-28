@@ -27,10 +27,11 @@ export function* walk_directory(directory: string): IterableIterator<string> {
 
 export function get_output_path(filepath: string, dirs) {
 	const splitted = filepath.split(path.sep);
-	return path.join(
-		dirs.public,
-		splitted.slice(splitted.indexOf(dirs.content) + 1).join(path.sep)
-	);
+	const content_dir_name = dirs.content.replace(/^(?:\.+\/)+/, "");
+	const route_path = splitted
+		.slice(splitted.indexOf(content_dir_name) + 1)
+		.join(path.sep);
+	return path.join(dirs.public, route_path);
 }
 
 export function write_file(filepath: string, filecontent: string) {

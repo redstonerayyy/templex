@@ -1,65 +1,54 @@
-// import * as fs from "fs";
-// import * as path from "path";
-// import http from "http";
-// import handler from "serve-handler";
+import * as fs from "fs";
+import * as path from "path";
+import http from "http";
+import handler from "serve-handler";
+import chokidar from "chokidar";
+import * as util from "./util.js";
+import * as build from "./build.js";
 
-// import chokidar from "chokidar";
+export default function watch() {
+	const config = util.read_yml_config("./templex.yml");
+	const dirs = config.dirs;
 
-// // build the whole site and watch for file
-// // changes to rebuild the site efficiently
-// // and reflect the changes
-// export default function cli_watch(cli_options: CliOptions, config: Config) {
-// 	/*------------ directories ------------*/
-// 	const rootdir = config.directories.root;
+	build.process_files(dirs.content, dirs, { reload: true });
+	build.process_files(dirs.static, dirs, { reload: true });
 
-// 	const staticdir = path.join(rootdir, config.directories.static);
-// 	const processeddir = path.join(rootdir, config.directories.processed);
-// 	const layoutdir = path.join(rootdir, config.directories.layout);
-// 	const contentdir = path.join(rootdir, config.directories.content);
+	let change = false;
+	const watcher = chokidar
+		.watch([dirs.static, dirs.content, dirs.layout], {
+			persistent: true,
+		})
+		.on("change", (event: string, path: any) => {
+			process.stdout.write(`Rebuilding ${event} ...`);
+			build.build_markdown(event, dirs, { reload: true });
+			process.stdout.write("Done!\n");
+			change = true;
+		});
 
-// 	/*------------ build once before changes ------------*/
-// 	cli_build(cli_options, config);
+	const server = http.createServer((req, res) => {
+		if (req.url === "/_reload") {
+			if (change) {
+				change = false;
+				res.writeHead(200, {
+					"Content-Type": "text/plain",
+				});
+				res.end("yes");
+				console.log("yes");
+			} else {
+				res.writeHead(200, {
+					"Content-Type": "text/plain",
+				});
+				res.end("no");
+			}
+		} else {
+			return handler(req, res, {
+				public: path.join(dirs.public),
+				cleanUrls: true,
+			});
+		}
+	});
 
-// 	/*------------ define watcher ------------*/
-// 	let change = false;
-// 	const watcher = chokidar
-// 		.watch([staticdir, processeddir, layoutdir, contentdir], {
-// 			persistent: true,
-// 		})
-// 		.on("change", (event: string, path: any) => {
-// 			process.stdout.write(`Rebuilding ${event} ...`);
-// 			cli_build(cli_options, config);
-// 			change = true;
-// 			process.stdout.write("Done!\n");
-// 		});
-
-// 	/*------------ serve files on localhost ------------*/
-// 	const server = http.createServer((req, res) => {
-// 		if (req.url === "/_reload") {
-// 			if (change) {
-// 				change = false;
-// 				res.writeHead(200, {
-// 					"Content-Type": "text/plain",
-// 				});
-// 				res.end("yes");
-// 			} else {
-// 				res.writeHead(200, {
-// 					"Content-Type": "text/plain",
-// 				});
-// 				res.end("no");
-// 			}
-// 		} else {
-// 			return handler(req, res, {
-// 				public: path.join(
-// 					config.directories.root,
-// 					config.directories.public
-// 				),
-// 				cleanUrls: true,
-// 			});
-// 		}
-// 	});
-
-// 	server.listen(8080, () => {
-// 		console.log("Running at http://localhost:8080!");
-// 	});
-// }
+	server.listen(8080, () => {
+		console.log("Running at http://localhost:8080");
+	});
+}

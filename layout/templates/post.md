@@ -1,6 +1,7 @@
 ---
 title: ""
-releasedate: ""
-lastchanged: ""
+releasedate: "{{ current_date }}"
+lastchanged: "{{ current_date }}"
 type: "post"
+summary: ""
 ---
