@@ -7,24 +7,28 @@ export default function build() {
 	const config = util.read_yml_config("./templex.yml");
 	const dirs = config.dirs;
 
-	process_files(dirs.content, dirs);
-	process_files(dirs.static, dirs);
+	build_files(dirs.content, dirs);
+	build_files(dirs.static, dirs);
 }
 
-export function process_files(directory, dirs, options = {}) {
+export function build_files(directory, dirs, options = {}) {
 	const files = util.walk_directory(directory);
 
 	for (const file of files) {
-		if (path.extname(file) === ".md") {
-			build_markdown(file, dirs, options);
-		} else if (
-			path.extname(file) === ".scss" ||
-			path.extname(file) === ".sass"
-		) {
-			build_scss(file, dirs);
-		} else {
-			copy_file(file, dirs);
-		}
+		build_file(file, dirs, options);
+	}
+}
+
+export function build_file(file: string, dirs, options = {}) {
+	if (path.extname(file) === ".md") {
+		build_markdown(file, dirs, options);
+	} else if (
+		path.extname(file) === ".scss" ||
+		path.extname(file) === ".sass"
+	) {
+		build_scss(file, dirs);
+	} else {
+		copy_file(file, dirs);
 	}
 }
 

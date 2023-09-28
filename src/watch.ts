@@ -10,17 +10,17 @@ export default function watch() {
 	const config = util.read_yml_config("./templex.yml");
 	const dirs = config.dirs;
 
-	build.process_files(dirs.content, dirs, { reload: true });
-	build.process_files(dirs.static, dirs, { reload: true });
+	build.build_files(dirs.content, dirs, { reload: true });
+	build.build_files(dirs.static, dirs, { reload: true });
 
 	let change = false;
 	const watcher = chokidar
 		.watch([dirs.static, dirs.content, dirs.layout], {
 			persistent: true,
 		})
-		.on("change", (event: string, path: any) => {
-			process.stdout.write(`Rebuilding ${event} ...`);
-			build.build_markdown(event, dirs, { reload: true });
+		.on("change", (filepath: string) => {
+			process.stdout.write(`Rebuilding ${filepath} ...`);
+			build.build_file(filepath, dirs, { reload: true });
 			process.stdout.write("Done!\n");
 			change = true;
 		});
@@ -33,7 +33,6 @@ export default function watch() {
 					"Content-Type": "text/plain",
 				});
 				res.end("yes");
-				console.log("yes");
 			} else {
 				res.writeHead(200, {
 					"Content-Type": "text/plain",
