@@ -10,5 +10,6 @@ summary: "Overview of the different Parts of the Documentation. Links to other P
 
 ## Your Options
 
-[Introduction](./introduction.html)
-[CLI Overview](./cli-commands.html)
+-   [Introduction](./introduction.html)
+
+-   [CLI Overview](./cli-commands.html)

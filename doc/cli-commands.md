@@ -26,3 +26,5 @@ and static directories. Does not watch file renaming or moving.
 ```sh
 yarn start watch
 ```
+
+[Back to Index](./index.html)

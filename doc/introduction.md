@@ -24,3 +24,5 @@ yarn install
 yarn build
 node dist/main.js build
 ```
+
+[Back to Index](./index.html)
