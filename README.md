@@ -10,6 +10,8 @@ as I focus on what i personally need.
 
 ## How can I try out templex?
 
+After building you'll find the documentation in `./public`.
+
 ```sh
 git clone https://github.com/Redstonerayy/templex/
 yarn install
@@ -19,8 +21,7 @@ node dist/main.js build
 
 ## Todo
 
--   watch command w/ automatic reload
--   proper styling and documentation
 -   permalinks
 -   code highlighting
 -   better cli
+-   template support

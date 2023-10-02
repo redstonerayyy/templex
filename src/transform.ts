@@ -35,7 +35,7 @@ export function render_html(htmlstring: string, data): string {
 }
 
 export function extract_metadata(mdcontent: string): [string, object] {
-	const regex = /---[ \n]*([^]*)[ \n]*---/s;
+	const regex = /---[ \n]*([^-]*)[ \n]*---/s;
 	const match = mdcontent.match(regex);
 
 	let newmdcontent = mdcontent.replace(regex, "");

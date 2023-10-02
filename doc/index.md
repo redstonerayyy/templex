@@ -13,3 +13,7 @@ summary: "Overview of the different Parts of the Documentation. Links to other P
 -   [Introduction](./introduction.html)
 
 -   [CLI Overview](./cli-commands.html)
+
+-   [Templex Configuration](./configuration.html)
+
+-   [Markdown Syntax](./markdown-syntax.html)
