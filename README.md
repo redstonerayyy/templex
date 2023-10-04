@@ -23,4 +23,4 @@ node dist/main.js build
 
 -   permalinks
 -   better cli
--   template support
+-   change scss and js location into the layout folder
