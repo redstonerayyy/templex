@@ -16,6 +16,7 @@ export function markdown_to_html(mdcontent: string): string {
 	const md = new Markdown({
 		langPrefix: "",
 		typographer: true,
+		highlight: highlight_sourcecode,
 	});
 
 	return md.render(mdcontent);
@@ -45,21 +46,14 @@ export function extract_metadata(mdcontent: string): [string, object] {
 	return [newmdcontent, yaml.parse(match[1])];
 }
 
-export function highlight_sourcecode(html: string): string {
-	const code_regex = /<code *class="([a-z-]*)">([^<]*)<\/code>/gs;
-	const matchings = html.matchAll(code_regex);
-
-	for (const match of matchings) {
-		const code = match[2];
-		const lang = match[1].split("-")[1];
-
-		const hightlighted = match[0].replace(
-			code,
-			hljs.highlight(code, { language: lang }).value
-		);
-		html = html.replace(match[0], hightlighted);
+export function highlight_sourcecode(html: string, lang: string): string {
+	if (lang && hljs.getLanguage(lang)) {
+		try {
+			return hljs.highlight(html, { language: lang }).value;
+		} catch (__) {}
 	}
-	return html;
+
+	return "";
 }
 
 export function append_reload_script(html: string): string {

@@ -40,10 +40,7 @@ export function build_markdown(filepath: string, dirs, options = {}) {
 
 	metadata["content"] = transform.markdown_to_html(markdown);
 	const layoutpath = path.join(dirs.layout, `${metadata["type"]}.njk`);
-	console.log(metadata["content"]);
-	console.log("---------------------------");
 	let outputhtml = transform.nunjucks_to_html(layoutpath, metadata);
-	console.log(outputhtml);
 
 	outputhtml = apply_options(outputhtml, options);
 
@@ -55,7 +52,6 @@ export function build_markdown(filepath: string, dirs, options = {}) {
 
 function apply_options(html: string, options): string {
 	if (options.reload) html = transform.append_reload_script(html);
-	if (options.highlight) html = transform.highlight_sourcecode(html);
 	return html;
 }
 
