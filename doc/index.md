@@ -18,4 +18,6 @@ summary: "Overview of the different Parts of the Documentation. Links to other P
 
 -   [Markdown Syntax](./markdown-syntax.html)
 
+-   [Code Highlighting](./code-highlighting.html)
+
 -   [Features](./example-features.html)

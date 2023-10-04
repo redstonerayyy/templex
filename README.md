@@ -22,6 +22,5 @@ node dist/main.js build
 ## Todo
 
 -   permalinks
--   code highlighting
 -   better cli
 -   template support
