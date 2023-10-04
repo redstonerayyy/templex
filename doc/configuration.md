@@ -9,9 +9,9 @@ summary: "Explains how to configure Templex. Gives an example overview. Is a con
 ## Templex Configuration
 
 You can define the project title and you directories in a configuration
-file named `templex.yml`.
+file named **templex.yml**.
 
-```yml
+```yaml
 title: "Templex Documentation"
 dirs:
     public: "./public"

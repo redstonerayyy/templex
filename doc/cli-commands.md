@@ -14,7 +14,7 @@ summary: "Explains the Templex Commandline Commands. Gives Examples how and when
 
 Builds the project.
 
-```sh
+```shell
 yarn start build
 ```
 
@@ -23,7 +23,7 @@ yarn start build
 Builds the project and watches for file changes in the content, layout
 and static directories. Does not watch file renaming or moving.
 
-```sh
+```shell
 yarn start watch
 ```
 

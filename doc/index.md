@@ -17,3 +17,5 @@ summary: "Overview of the different Parts of the Documentation. Links to other P
 -   [Templex Configuration](./configuration.html)
 
 -   [Markdown Syntax](./markdown-syntax.html)
+
+-   [Features](./example-features.html)

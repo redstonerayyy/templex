@@ -4,9 +4,9 @@
     font-family: $roboto;
 }
 
-pre > * {
-    font-family: $notosansmono;
-    font-size: 12px;
+code, code > * {
+    font-family: ui-monospace, Consolas, Liberation Mono, monospace;
+    font-size: 1em;
 }
 
 .main-content {

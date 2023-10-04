@@ -10,8 +10,8 @@ export default function watch() {
 	const config = util.read_yml_config("./templex.yml");
 	const dirs = config.dirs;
 
-	build.build_files(dirs.content, dirs, { reload: true });
-	build.build_files(dirs.static, dirs, { reload: true });
+	build.build_files(dirs.content, dirs, { reload: true, highlight: true });
+	build.build_files(dirs.static, dirs, { reload: true, highlight: true });
 
 	let change = false;
 	const watcher = chokidar
@@ -20,7 +20,7 @@ export default function watch() {
 		})
 		.on("change", (filepath: string) => {
 			process.stdout.write(`Rebuilding ${filepath} ...`);
-			build.build_file(filepath, dirs, { reload: true });
+			build.build_file(filepath, dirs, { reload: true, highlight: true });
 			process.stdout.write("Done!\n");
 			change = true;
 		});

@@ -18,7 +18,7 @@ as I focus on what i personally need.
 
 ## How can I try out templex?
 
-```sh
+```shell
 git clone https://github.com/Redstonerayy/templex/
 yarn install
 yarn build

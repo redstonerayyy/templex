@@ -21,7 +21,7 @@ Be aware that `-` inside of the metadata block will be ignored and are not allow
 
 #### Example Metadata
 
-```
+```yaml
 ---
 title: Markdown Syntax for Templex
 releasedate: "2.10.23"
