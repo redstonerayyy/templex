@@ -14,6 +14,7 @@
 		"chokidar": "^3.5.3",
 		"highlight.js": "^11.8.0",
 		"markdown-it": "^13.0.2",
+		"markdown-it-link-attributes": "^4.0.1",
 		"nunjucks": "^3.2.4",
 		"sass": "^1.68.0",
 		"serve-handler": "^6.1.5",

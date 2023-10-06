@@ -20,7 +20,11 @@ export default function watch() {
 		})
 		.on("change", (filepath: string) => {
 			process.stdout.write(`Rebuilding ${filepath} ...`);
-			build.build_file(filepath, dirs, { reload: true, highlight: true });
+			if (path.extname(filepath) !== ".njk")
+				build.build_file(filepath, dirs, {
+					reload: true,
+					highlight: true,
+				});
 			process.stdout.write("Done!\n");
 			change = true;
 		});

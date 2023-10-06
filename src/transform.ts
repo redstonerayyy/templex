@@ -1,5 +1,6 @@
 import * as sass from "sass";
 import Markdown from "markdown-it";
+import Mila from "markdown-it-link-attributes";
 import nunjucks from "nunjucks";
 import hljs from "highlight.js";
 import * as yaml from "yaml";
@@ -15,8 +16,19 @@ export function scss_to_css(filepath: string): string {
 export function markdown_to_html(mdcontent: string): string {
 	const md = new Markdown({
 		langPrefix: "",
+		html: true,
 		typographer: true,
 		highlight: highlight_sourcecode,
+	});
+
+	md.use(Mila, {
+		matcher(href, config) {
+			return href.startsWith("http");
+		},
+		attrs: {
+			target: "_blank",
+			rel: "noopener",
+		},
 	});
 
 	return md.render(mdcontent);
