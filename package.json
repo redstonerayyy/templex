@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@types/live-server": "^1.2.1",
 		"@types/markdown-it": "^13.0.2",
-		"@types/node": "^20.8.2",
+		"@types/node": "^20.8.3",
 		"@types/nunjucks": "^3.2.4",
 		"@types/serve-handler": "^6.1.2",
 		"typescript": "^5.2.2"
