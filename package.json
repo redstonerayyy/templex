@@ -21,7 +21,7 @@
 		"yaml": "^2.3.3"
 	},
 	"devDependencies": {
-		"@types/live-server": "^1.2.1",
+		"@types/live-server": "^1.2.2",
 		"@types/markdown-it": "^13.0.2",
 		"@types/node": "^20.8.6",
 		"@types/nunjucks": "^3.2.4",
