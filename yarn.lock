@@ -32,10 +32,10 @@
   dependencies:
     undici-types "~5.25.1"
 
-"@types/nunjucks@^3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@types/nunjucks/-/nunjucks-3.2.4.tgz#3ee12a8fcd2633898f6a40e6f891b845d45f0019"
-  integrity sha512-Ro2d3CROK+QNreS9MgFloCuRyHaLHyxkoiDax97uUWHQQwtKckH11ZvJfRVEuYGcTgJPY7JFwrjK3jRCTRLXwQ==
+"@types/nunjucks@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/@types/nunjucks/-/nunjucks-3.2.5.tgz#88c820c9052bc19fefc11dfe5be76b5eaeada53d"
+  integrity sha512-P9EakWGTqHpziLO9FMRm98LrVnPoipXGR/iAVF55xYa9SKQq7Brob/JTxGESwkhoNkL7fFvROdUOWNwTceELfw==
 
 "@types/serve-handler@^6.1.2":
   version "6.1.2"
