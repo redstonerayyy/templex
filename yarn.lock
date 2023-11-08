@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@types/linkify-it/-/linkify-it-3.0.2.tgz#fd2cd2edbaa7eaac7e7f3c1748b52a19143846c9"
   integrity sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==
 
-"@types/live-server@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@types/live-server/-/live-server-1.2.2.tgz#2757d85ddf9d1107eee8df22a4a9bdb69aa1a129"
-  integrity sha512-HS3r9pfJRW6PwWKK2Wc/doO1CQEslEX2uvrnkqKtqXzZxZeW9h1FTpL+SGNQcDeoxGOY/isttv+S4+VfJy5daA==
+"@types/live-server@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@types/live-server/-/live-server-1.2.3.tgz#ebc2c2f5b3bbc29ce82aac9b4ee5ebaf77604edf"
+  integrity sha512-s8SQNTnUgaYQemV1Nt7SILh5ChYbWVg8ONLBbcmjHcpAwpyHh7MXBIpwgwPNvx19lIbBWszQJ3k8ynNIHLtlyg==
 
 "@types/markdown-it@^13.0.6":
   version "13.0.6"
