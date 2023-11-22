@@ -26,6 +26,6 @@
 		"@types/node": "^20.9.4",
 		"@types/nunjucks": "^3.2.6",
 		"@types/serve-handler": "^6.1.4",
-		"typescript": "^5.2.2"
+		"typescript": "^5.3.2"
 	}
 }
