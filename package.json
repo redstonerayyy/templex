@@ -11,7 +11,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"chokidar": "^3.6.0",
+		"chokidar": "^4.0.1",
 		"highlight.js": "^11.9.0",
 		"markdown-it": "^14.1.0",
 		"markdown-it-link-attributes": "^4.0.1",
